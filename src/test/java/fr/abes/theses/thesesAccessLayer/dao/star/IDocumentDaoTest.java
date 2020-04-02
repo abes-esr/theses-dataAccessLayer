@@ -1,5 +1,6 @@
 package fr.abes.theses.thesesAccessLayer.dao.star;
 
+import fr.abes.theses.thesesAccessLayer.ThesesAccessLayerApplication;
 import fr.abes.theses.thesesAccessLayer.model.entities.star.DocumentStar;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -8,18 +9,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DataJpaTest
 @ExtendWith(SpringExtension.class)
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@SpringBootTest(classes = ThesesAccessLayerApplication.class)
+@EnableTransactionManagement
 public class IDocumentDaoTest {
     public DocumentStar document;
 
@@ -34,27 +34,17 @@ public class IDocumentDaoTest {
     @Test
     public void testFindDocument() {
         DocumentStar docInDb = documentDao.save(document);
-        DocumentStar docFromDb = documentDao.findById(docInDb.getIdDoc()).get();
-        assertThat(docFromDb).isEqualTo(docInDb);
+        DocumentStar docOutDb = documentDao.findById(docInDb.getIdDoc()).get();
+        assertThat(docOutDb.getId()).isEqualTo(docInDb.getId());
+        assertThat(docOutDb.getDoc()).isEqualTo(docInDb.getDoc());
+        documentDao.deleteById(docInDb.getId());
     }
 
     @Test
-    public void testSaveDocument() {
-        DocumentStar docInDb = documentDao.save(document);
-        assertThat(docInDb.getCodeEtab()).isEqualTo("CAEN");
-    }
-
-    @Test
-    public void testFindAllDocument() throws DocumentException {
-        DocumentStar document2In = getDocument();
-        document2In.setIdDoc(2);
-        DocumentStar document1Out = documentDao.save(document);
-        DocumentStar document2Out = documentDao.save(document2In);
-
-        List<DocumentStar> listDocument = documentDao.findAll();
-        assertThat(listDocument.size()).isEqualTo(2);
-        assertThat(listDocument.get(0)).isEqualTo(document1Out);
-        assertThat(listDocument.get(1)).isEqualTo(document2Out);
+    public void testDeleteById() {
+        DocumentStar documentOut = documentDao.save(document);
+        documentDao.deleteById(documentOut.getId());
+        assertThat(documentDao.findById(documentOut.getId())).isEmpty();
     }
 
     private DocumentStar getDocument() throws DocumentException {

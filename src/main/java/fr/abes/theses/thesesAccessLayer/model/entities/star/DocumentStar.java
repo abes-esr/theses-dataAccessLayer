@@ -4,7 +4,11 @@ import fr.abes.theses.thesesAccessLayer.model.entities.GenericEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnTransformer;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.TypeDefs;
+import org.w3c.dom.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,9 +22,9 @@ public class DocumentStar implements Serializable, GenericEntity<Integer> {
     @Column(name = "IDDOC")
     private Integer idDoc;
 
-    @Type(type = "fr.abes.theses.thesesAccessLayer.model.types.HibernateXmlType")
-    @Column(name = "DOC")
-    @Basic(fetch = FetchType.LAZY)
+    @ColumnTransformer(read = "NVL2(DOC, (DOC).getClobVal(), NULL)", write = "NULLSAFE_XMLTYPE(?)")
+    @Lob
+    @Column(name = "DOC", columnDefinition = "XMLType")
     private String doc;
 
     @Column(name = "TEXTE")

@@ -89,7 +89,6 @@
                     <dc:subject xml:lang="en">Keyboard</dc:subject>
                     <dc:subject xml:lang="en">Computer</dc:subject>
                     <dc:subject xml:lang="en">Ergonomy</dc:subject>
-                    <dc:subject xsi:type="dcterms:DDC">004</dc:subject>
                     <tef:sujetRameau xml:lang="fr">
                         <tef:vedetteRameauPersonne>
                             <tef:elementdEntree autoriteExterne="032886020" autoriteSource="Sudoc">Hugo, Léopoldine (1824-1843)</tef:elementdEntree>
@@ -152,61 +151,7 @@
                     <dcterms:abstract xml:lang="fr">AZERTY est un arrangement spécifique des caractères de l’alphabet latin et de divers caractères typographiques sur les touches des machines à écrire et claviers d’ordinateur. Elle dérive, tout comme le QWERTZ germanique, de la disposition QWERTY anglaise et possède ses propres variantes nationales en France et en Belgique. Son nom provient des six premières lettres de la première rangée des touches alphabétiques.</dcterms:abstract>
                     <dcterms:abstract xml:lang="en">AZERTY is a specific layout for the characters of the Latin alphabet on typewriter keys and computer keyboards. The layout takes its name from the first six letters to appear on the first row of alphabetical keys. Like the German QWERTZ layout, it is modelled on the English QWERTY layout. It is used by most French speakers based in Europe, though France and Belgium each have their own national variations on the layout. Luxembourg and Switzerland use the Swiss QWERTZ keyboard. Most of the residents of Quebec, the mainly French-speaking province of Canada, use a QWERTY keyboard that has been adapted to the French language such as the Multilingual Standard keyboard CAN/CSA Z243.200-92 which is stipulated by the government of Quebec and the Government of Canada.The competing layouts devised for French (e.g., the ZHJAYSCPG layout put forward in 1907, Claude Marsan's 1976 layout, the 2002 Dvorak-fr, and the 2005 Bépo layout) have won only limited recognition.</dcterms:abstract>
                     <dc:type>Electronic Thesis or Dissertation</dc:type>
-                    <dc:type xsi:type="dcterms:DCMIType">Text</dc:type>
-                    <dc:type xsi:type="dcterms:DCMIType">Collection</dc:type>
-                    <dc:type xsi:type="dcterms:DCMIType">Image</dc:type>
-                    <dc:type xsi:type="dcterms:DCMIType">MovingImage</dc:type>
-                    <dc:type xsi:type="dcterms:DCMIType">StillImage</dc:type>
-                    <dc:type xsi:type="dcterms:DCMIType">Software</dc:type>
-                    <dc:type xsi:type="dcterms:DCMIType">InteractiveResource</dc:type>
-                    <dc:type xsi:type="dcterms:DCMIType">Sound</dc:type>
-                    <dc:language xsi:type="dcterms:RFC3066">fr</dc:language>
-                    <dc:language xsi:type="dcterms:RFC3066">en</dc:language>
                 </tef:thesisRecord>
-            </mets:xmlData>
-        </mets:mdWrap>
-    </mets:dmdSec>
-    <mets:dmdSec ID="ABES.STAR.THESE_12286.VERSION_COMPLETE.DESCRIPTION.EDITION_ARCHIVAGE">
-        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="tef_desc_edition">
-            <mets:xmlData>
-                <tef:edition>
-                    <dcterms:medium xsi:type="dcterms:IMT">PDF</dcterms:medium>
-                    <dcterms:extent>375923</dcterms:extent>
-                    <tef:editeur>
-                        <tef:nom>ABES</tef:nom>
-                        <tef:place>Montpellier</tef:place>
-                    </tef:editeur>
-                    <dcterms:issued xsi:type="dcterms:W3CDTF">2018-12-31</dcterms:issued>
-                </tef:edition>
-            </mets:xmlData>
-        </mets:mdWrap>
-    </mets:dmdSec>
-    <mets:dmdSec ID="ABES.STAR.THESE_12286.VERSION_COMPLETE.DESCRIPTION.EDITION_1">
-        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="tef_desc_edition">
-            <mets:xmlData>
-                <tef:edition>
-                    <dcterms:medium xsi:type="dcterms:IMT">text/html</dcterms:medium>
-                    <dcterms:extent />
-                    <dc:identifier xsi:type="dcterms:URI">https://intranetabes/2013FOR19999</dc:identifier>
-                </tef:edition>
-            </mets:xmlData>
-        </mets:mdWrap>
-    </mets:dmdSec>
-    <mets:dmdSec ID="ABES.STAR.THESE_12286.VERSION_INCOMPLETE_1.DESCRIPTION.EDITION_1">
-        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="tef_desc_edition">
-            <mets:xmlData>
-                <tef:edition>
-                    <dcterms:medium xsi:type="dcterms:IMT">content/unknown</dcterms:medium>
-                    <dcterms:extent>15335</dcterms:extent>
-                    <dc:identifier xsi:type="dcterms:URI">https://etablissement/2013FOR19999</dc:identifier>
-                    <dc:identifier xsi:type="dcterms:URI">http://www.theses.fr/2013FOR19999/abes</dc:identifier>
-                    <dc:identifier xsi:type="dcterms:URI" />
-                    <tef:editeur>
-                        <tef:nom>ABES</tef:nom>
-                        <tef:place>Montpellier</tef:place>
-                    </tef:editeur>
-                    <dcterms:issued xsi:type="dcterms:W3CDTF">2018-12-31</dcterms:issued>
-                </tef:edition>
             </mets:xmlData>
         </mets:mdWrap>
     </mets:dmdSec>
@@ -239,7 +184,6 @@
                     <dc:publisher>ABES</dc:publisher>
                     <dc:language>fr</dc:language>
                     <dc:date>2018</dc:date>
-                    <dc:type xsi:type="dcterms:DCMIType">Text</dc:type>
                 </tef:ressourceExterneDescription>
             </mets:xmlData>
         </mets:mdWrap>
@@ -253,7 +197,6 @@
                     <dc:publisher>ABES</dc:publisher>
                     <dc:language>en</dc:language>
                     <dc:date>2016</dc:date>
-                    <dc:type xsi:type="dcterms:DCMIType">Text</dc:type>
                 </tef:ressourceExterneDescription>
             </mets:xmlData>
         </mets:mdWrap>
@@ -270,9 +213,6 @@
                             <tef:nationalite scheme="ISO-3166-1">FR</tef:nationalite>
                             <tef:autoriteExterne autoriteSource="Sudoc">026927608</tef:autoriteExterne>
                         </tef:auteur>
-                        <dc:identifier xsi:type="tef:nationalThesisPID">http://www.theses.fr/2013FOR19999</dc:identifier>
-                        <dc:identifier xsi:type="tef:NNT">2013FOR19999</dc:identifier>
-                        <dcterms:dateAccepted xsi:type="dcterms:W3CDTF">2013-02-14</dcterms:dateAccepted>
                         <tef:thesis.degree>
                             <tef:thesis.degree.discipline xml:lang="fr">Azerty</tef:thesis.degree.discipline>
                             <tef:thesis.degree.grantor>

@@ -38,6 +38,7 @@ public class NoticeBiblio implements Serializable, GenericEntity<Integer> {
     private Date dateCreation;
 
     @Column(name = "DATE_MODIFICATION")
+    @Temporal(TemporalType.DATE)
     private Date dateModification;
 
     @Column(name = "INDIC_SUDOC")

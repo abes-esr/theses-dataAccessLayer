@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-@Service
 @Getter
 public class DaoStepProvider {
     @Resource
