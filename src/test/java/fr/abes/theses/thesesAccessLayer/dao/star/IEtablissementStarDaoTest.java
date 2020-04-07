@@ -2,6 +2,8 @@ package fr.abes.theses.thesesAccessLayer.dao.star;
 
 import fr.abes.theses.thesesAccessLayer.ThesesAccessLayerApplication;
 import fr.abes.theses.thesesAccessLayer.model.entities.star.EtablissementStar;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,7 +33,7 @@ public class IEtablissementStarDaoTest {
     private IEtablissementStarDao etablissementDao;
 
     @BeforeEach
-    public void init() throws ParserConfigurationException, SAXException, IOException {
+    public void init() throws ParserConfigurationException, SAXException, IOException, JDOMException {
         etablissement = getEtablissement();
     }
 
@@ -48,14 +50,13 @@ public class IEtablissementStarDaoTest {
         assertThat(etablissementout.getFiche()).isEqualTo(etablissementIn.getFiche());
     }
 
-    private EtablissementStar getEtablissement() throws IOException, SAXException, ParserConfigurationException {
+    private EtablissementStar getEtablissement() throws IOException, SAXException, ParserConfigurationException, JDOMException {
         EtablissementStar etablissement = new EtablissementStar();
         etablissement.setCode("TEST");
-        File xml = new File(getClass().getClassLoader().getResource("etablissement.xml").getPath());
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder docBuilder = factory.newDocumentBuilder();
-        Document doc = docBuilder.parse(xml) ;
-        etablissement.setFiche(doc.toString());
+        String filePath = getClass().getClassLoader().getResource("etablissement.xml").getPath();
+        SAXBuilder saxBuilder = new SAXBuilder();
+        org.jdom2.Document jdomDoc = saxBuilder.build(new File(filePath));
+        etablissement.setFiche(jdomDoc);
         return etablissement;
     }
 }

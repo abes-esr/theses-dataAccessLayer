@@ -5,30 +5,31 @@ import fr.abes.theses.thesesAccessLayer.model.types.HibernateXMLType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnTransformer;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
-import org.hibernate.annotations.TypeDefs;
-import org.springframework.stereotype.Service;
-import org.w3c.dom.Document;
+import org.jdom2.Document;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "ETABLISSEMENT")
 @NoArgsConstructor
 @Getter @Setter
+@TypeDef(name = "HibernateXMLType", typeClass = HibernateXMLType.class)
 public class EtablissementStar implements Serializable, GenericEntity<String> {
     @Id
     @Column(name = "CODE")
     private String code;
 
-    @ColumnTransformer(read = "NVL2(FICHE, to_clob(FICHE), NULL)", write = "NULLSAFE_XMLTYPE(?)")
-    @Column(name = "FICHE", columnDefinition = "XMLType")
-    private String fiche;
+    @Type(type = "HibernateXMLType")
+    @Column(name = "FICHE")
+    private org.jdom2.Document fiche;
 
-    public EtablissementStar(String code, String fiche) {
+    public EtablissementStar(String code, Document fiche) {
         this.code = code;
         this.fiche = fiche;
     }
