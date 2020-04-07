@@ -1,18 +1,22 @@
 package fr.abes.theses.thesesAccessLayer.model.entities.star;
 
+import fr.abes.theses.thesesAccessLayer.model.entities.GenericEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
+@Entity
 @Table(name = "LDAP_USER")
 @NoArgsConstructor
 @Setter @Getter
-public class LdapUser implements Serializable {
+public class LdapUser implements Serializable, GenericEntity<String> {
+    @Id
     @Column(name = "DN")
     String dn;
     @Column(name = "OBJECTCLASS")
@@ -68,4 +72,8 @@ public class LdapUser implements Serializable {
     @Column(name = "ROLE")
     String role;
 
+    @Override
+    public String getId() {
+        return dn;
+    }
 }

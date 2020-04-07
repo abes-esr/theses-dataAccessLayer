@@ -1,20 +1,23 @@
 package fr.abes.theses.thesesAccessLayer.model.entities.star;
 
+import fr.abes.theses.thesesAccessLayer.model.entities.GenericEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
-
+@Entity
 @Table(name = "COMMENTAIRES")
 @NoArgsConstructor
 @Getter @Setter
-public class Commentaires implements Serializable {
+@SequenceGenerator(name = "SEQ_COMMENTAIRES")
+public class Commentaires implements Serializable, GenericEntity<Integer> {
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_COMMENTAIRES")
+    @Column(name = "IDCOMMENTAIRE")
+    private Integer idCommentaire;
     @Column(name = "IDTHESE")
     private Integer idThese;
     @Column(name = "VALEUR")
@@ -27,4 +30,9 @@ public class Commentaires implements Serializable {
     private String login;
     @Column(name = "DISPLAYNAME")
     private String displayName;
+
+    @Override
+    public Integer getId() {
+        return idCommentaire;
+    }
 }

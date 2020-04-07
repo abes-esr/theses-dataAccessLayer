@@ -16,7 +16,7 @@ public class DaoStarProvider {
 //    private ICompteDao compteDao;
 
     @Resource
-    private IDocumentDao documentDao;
+    private IDocumentStarDao documentDao;
 
 //    @Resource
 //    private  IDomaineHalDao domaineHalDao;

@@ -5,22 +5,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
+@Entity
 @Table(name = "COURRIEL")
 @NoArgsConstructor
 @Getter @Setter
+@SequenceGenerator(name = "SEQ_COURRIEL")
 public class Courriel implements Serializable, GenericEntity<Integer> {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_COURRIEL")
     @Column(name = "ID_COURRIEL")
     private Integer idCourriel;
     @Column(name = "DATE_ENVOI")
-    private Date dateEnvoi;
+    @Temporal(TemporalType.DATE)
+    private Calendar dateEnvoi;
     @Column(name = "PAGE_SOURCE")
     private String pageSource;
     @Column(name = "MAIL_DEMANDEUR")
@@ -34,13 +36,13 @@ public class Courriel implements Serializable, GenericEntity<Integer> {
     @Column(name = "PPN_ORIGINE")
     private String ppnOrigine;
 
-    public Courriel(Integer idCourriel, Date dateEnvoi, String pageSource, String mailDemandeur, String mailDestinataire,
+    public Courriel(Integer idCourriel, Calendar dateEnvoi, String pageSource, String mailDemandeur, String mailDestinataire,
                     String objetMail, String messageMail, String ppnOrigine) {
         this.idCourriel = idCourriel;
         this.dateEnvoi = dateEnvoi;
         this.pageSource = pageSource;
         this.mailDemandeur = mailDemandeur;
-        this.mailDemandeur = mailDemandeur;
+        this.mailDestinataire = mailDestinataire;
         this.objetMail = objetMail;
         this.messageMail = messageMail;
         this.ppnOrigine = ppnOrigine;

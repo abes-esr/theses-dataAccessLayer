@@ -17,14 +17,16 @@ import java.io.Serializable;
 @Table(name = "DOCUMENT")
 @NoArgsConstructor
 @Getter @Setter
+@SequenceGenerator(name = "SEQ_DOC")
 public class DocumentStar implements Serializable, GenericEntity<Integer> {
     @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_DOC")
     @Column(name = "IDDOC")
     private Integer idDoc;
 
     @ColumnTransformer(read = "NVL2(DOC, (DOC).getClobVal(), NULL)", write = "NULLSAFE_XMLTYPE(?)")
     @Lob
-    @Column(name = "DOC", columnDefinition = "XMLType")
+    @Column(name = "DOC")
     private String doc;
 
     @Column(name = "TEXTE")

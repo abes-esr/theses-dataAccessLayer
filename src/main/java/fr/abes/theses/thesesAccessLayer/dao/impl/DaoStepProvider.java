@@ -1,16 +1,15 @@
 package fr.abes.theses.thesesAccessLayer.dao.impl;
 
-import fr.abes.theses.thesesAccessLayer.dao.star.ICompteDao;
+import fr.abes.theses.thesesAccessLayer.dao.star.ICompteStarDao;
 import fr.abes.theses.thesesAccessLayer.dao.step.*;
 import lombok.Getter;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
 @Getter
 public class DaoStepProvider {
     @Resource
-    private ICompteDao compteDao;
+    private ICompteStarDao compteDao;
 
     @Resource
     private IDocIndexationSolrDao docIndexationSolrDao;
@@ -19,14 +18,14 @@ public class DaoStepProvider {
     private IDocumentStepDao documentStepDao;
 
     @Resource
-    private IEtablissementDao etablissementDao;
+    private IEtablissementStepDao etablissementDao;
 
     @Resource
-    private IInitFormationDao initFormationDao;
+    private IInitFormationStepDao initFormationDao;
 
     @Resource
-    private IRefHalDao refHalDao;
+    private IRefHalStepDao refHalDao;
 
     @Resource
-    private IVerrouDao verrouDao;
+    private IVerrouStepDao verrouDao;
 }

@@ -2,7 +2,6 @@ package fr.abes.theses.thesesAccessLayer.dao.impl;
 
 import fr.abes.theses.thesesAccessLayer.dao.portail.*;
 import lombok.Getter;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
@@ -12,7 +11,7 @@ public class DaoPortailProvider {
     private IAnrtCorrespDao anrtCorrespDao;
 
     @Resource
-    private ICompteDao compteDao;
+    private IComptePortailDao compteDao;
 
     @Resource
     private ICourrielDao courrielDao;
@@ -22,9 +21,6 @@ public class DaoPortailProvider {
 
     @Resource
     private IEtablissementDao etablissementDao;
-
-    @Resource
-    private IIdentificationDao identificationDao;
 
     @Resource
     private ILogImportSudocErrorDao logImportSudocErrorDao;

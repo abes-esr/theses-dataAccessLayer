@@ -2,6 +2,7 @@ package fr.abes.theses.thesesAccessLayer.dao.star;
 
 import fr.abes.theses.thesesAccessLayer.ThesesAccessLayerApplication;
 import fr.abes.theses.thesesAccessLayer.model.entities.star.NoticeBiblio;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,12 +29,13 @@ public class INoticeiblioDaoTest {
         noticeBiblio = getNoticeBiblio();
     }
 
+    @AfterEach
+    public void end() { noticeBiblioDao.delete(noticeBiblio);}
     @Test
     public void testFindById() {
         NoticeBiblio noticeIn = noticeBiblioDao.save(noticeBiblio);
         NoticeBiblio noticeOut = noticeBiblioDao.findById(noticeIn.getId()).get();
         assertThat(noticeOut.getId()).isEqualTo(noticeIn.getId());
-        noticeBiblioDao.delete(noticeIn);
     }
 
     @Test

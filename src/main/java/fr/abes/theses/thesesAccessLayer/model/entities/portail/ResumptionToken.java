@@ -5,14 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 
+@Entity
 @Table(name = "RESUMPTIONTOKEN")
 @NoArgsConstructor
 @Getter @Setter
@@ -25,20 +24,23 @@ public class ResumptionToken implements Serializable, GenericEntity<String> {
     @Column(name = "RTCURSOR")
     private Integer rtCursor;
     @Column(name = "EXPIRATIONDATE")
-    private Date expirationDate;
+    @Temporal(TemporalType.DATE)
+    private Calendar expirationDate;
     @Column(name = "METADATAPREFIX")
     private String metadataPrefix;
     @Column(name = "FROMDATE")
-    private Date fromDate;
+    @Temporal(TemporalType.DATE)
+    private Calendar fromDate;
     @Column(name = "UNTILDATE")
-    private Date untilDate;
+    @Temporal(TemporalType.DATE)
+    private Calendar untilDate;
     @Column(name = "SET_ID")
     private Integer setId;
     @Column(name = "PREVIOUSRECORDID")
     private Integer previousRecordId;
 
-    public ResumptionToken(String resumptionToken, String verb, Integer rtCursor, Date expirationDate, String metadataPrefix,
-                           Date fromDate, Date untilDate, Integer setId, Integer previousRecordId) {
+    public ResumptionToken(String resumptionToken, String verb, Integer rtCursor, Calendar expirationDate, String metadataPrefix,
+                           Calendar fromDate, Calendar untilDate, Integer setId, Integer previousRecordId) {
         this.resumptionToken = resumptionToken;
         this.verb = verb;
         this.rtCursor = rtCursor;

@@ -1,6 +1,5 @@
 package fr.abes.theses.thesesAccessLayer.configuration;
 
-import oracle.xdb.XMLType;
 import org.hibernate.dialect.Oracle12cDialect;
 
 public class OracleXmlDialect extends Oracle12cDialect {

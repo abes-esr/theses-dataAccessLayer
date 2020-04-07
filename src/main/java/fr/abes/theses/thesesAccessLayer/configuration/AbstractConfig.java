@@ -6,6 +6,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
 import java.util.Properties;
 
 public abstract class AbstractConfig {
@@ -20,20 +21,21 @@ public abstract class AbstractConfig {
     protected String dialect;
     @Value("${spring.jpa.hibernate.ddl-auto}")
     protected String ddlAuto;
+    @Value("${spring.jpa.database-platform}")
+    protected String platform;
 
     protected void configHibernate(LocalContainerEntityManagerFactoryBean em) {
         HibernateJpaVendorAdapter vendorAdapter
                 = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
-        Properties properties = new Properties();
+        HashMap<String, Object> properties = new HashMap<>();
+        properties.put("spring.jpa.database-platform", platform);
         properties.put("hibernate.show_sql", showsql);
         properties.put("hibernate.format_sql", true);
         properties.put("hibernate.dialect", dialect);
-        properties.put("driver-class-name", driver);
-        properties.put("logging.level.org.hibernate", "TRACE");
+        properties.put("logging.level.org.hibernate", "DEBUG");
         properties.put("hibernate.type", "trace");
-        properties.put("hibernate.hbm2ddl.auto", ddlAuto);
-        em.setJpaProperties(properties);
+        em.setJpaPropertyMap(properties);
     }
 
     protected DataSource getDataSource(String username, String password) {
