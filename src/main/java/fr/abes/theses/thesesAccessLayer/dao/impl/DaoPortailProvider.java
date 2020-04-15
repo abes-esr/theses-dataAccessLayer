@@ -53,9 +53,6 @@ public class DaoPortailProvider {
     private IOaiSetDao oaiSetDao;
 
     @Resource
-    private IRecSetIdDao recSetIdDao;
-
-    @Resource
     private IRecSetMarcDao recSetMarcDao;
 
     @Resource

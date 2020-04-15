@@ -1,5 +1,6 @@
 package fr.abes.theses.thesesAccessLayer.model.entities.portail;
 
+import com.sun.istack.NotNull;
 import fr.abes.theses.thesesAccessLayer.model.entities.GenericEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,25 +10,29 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-
+@Entity
 @Table(name = "REC_SET_OAI_DC")
 @NoArgsConstructor
 @IdClass(RecSetId.class)
 @Getter @Setter
 public class RecSetOaiDc implements Serializable, GenericEntity<RecSetId> {
     @Id
-    @Column(name = "OAIRECORD_ID")
-    private Integer oaiRecordId;
+    @ManyToOne
+    @JoinColumn(name = "OAIRECORD_ID")
+    @NotNull
+    private OaiRecordOaiDc oaiRecordId;
 
     @Id
-    @Column(name = "SET_ID")
-    private Integer setId;
+    @ManyToOne
+    @JoinColumn(name = "SET_ID")
+    @NotNull
+    private OaiSet setId;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATEINSERTION")
     private Date dateInsertion;
 
-    public RecSetOaiDc(Integer oaiRecordId, Integer setId, Date dateInsertion) {
+    public RecSetOaiDc(OaiRecordOaiDc oaiRecordId, OaiSet setId, Date dateInsertion) {
         this.oaiRecordId = oaiRecordId;
         this.setId = setId;
         this.dateInsertion = dateInsertion;
@@ -35,6 +40,6 @@ public class RecSetOaiDc implements Serializable, GenericEntity<RecSetId> {
 
     @Override
     public RecSetId getId() {
-        return new RecSetId(this.oaiRecordId, this.setId);
+        return new RecSetId(this.oaiRecordId.getId(), this.setId.getId());
     }
 }

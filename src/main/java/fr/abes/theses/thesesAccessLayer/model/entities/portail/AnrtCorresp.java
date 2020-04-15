@@ -5,18 +5,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
-
+@Entity
 @Table(name = "ANRT_CORRESP")
 @NoArgsConstructor
 @Getter @Setter
-public class AnrtCorresp implements Serializable, GenericEntity<String> {
+@SequenceGenerator(name = "SEQ_ANRT")
+public class AnrtCorresp implements Serializable, GenericEntity<Integer> {
     @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_ANRT")
+    @Column(name = "ID_ANRT")
+    private Integer idAnrt;
     @Column(name = "NNT")
     private String nnt;
     @Column(name = "URL")
@@ -28,7 +29,7 @@ public class AnrtCorresp implements Serializable, GenericEntity<String> {
     }
 
     @Override
-    public String getId() {
-        return nnt;
+    public Integer getId() {
+        return idAnrt;
     }
 }

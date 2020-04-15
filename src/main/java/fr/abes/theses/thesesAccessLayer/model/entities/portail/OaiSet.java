@@ -5,12 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
+@Entity
 @Table(name = "OAISET")
 @NoArgsConstructor
 @Getter @Setter
@@ -24,6 +24,10 @@ public class OaiSet implements Serializable, GenericEntity<Integer> {
     private String setName;
     @Column(name = "SETDESCRIPTION")
     private String setDescription;
+    @OneToMany(mappedBy = "setId")
+    private Set<RecSetMarc> recSetMarcs;
+    @OneToMany(mappedBy = "setId")
+    private List<RecSetOaiDc> recSetOaiDcs;
 
     public OaiSet(Integer setId, String setSpec, String setName, String setDescription) {
         this.setId = setId;

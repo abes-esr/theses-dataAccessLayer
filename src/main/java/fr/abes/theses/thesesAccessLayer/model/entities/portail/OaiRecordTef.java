@@ -7,8 +7,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
+@Entity
 @Table(name = "OAIRECORD_TEF")
 @NoArgsConstructor
 @Getter @Setter
@@ -18,11 +20,11 @@ public class OaiRecordTef implements Serializable, GenericEntity<Integer> {
     private Integer oaiRecordId;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATEINSERTION")
-    private Date dateInsertion;
+    private Calendar dateInsertion;
     @Column(name = "OAIIDENTIFIER")
     private String oaiIdentifier;
 
-    public OaiRecordTef(Integer oaiRecordId, Date dateInsertion, String oaiIdentifier) {
+    public OaiRecordTef(Integer oaiRecordId, Calendar dateInsertion, String oaiIdentifier) {
         this.oaiRecordId = oaiRecordId;
         this.dateInsertion = dateInsertion;
         this.oaiIdentifier = oaiIdentifier;
