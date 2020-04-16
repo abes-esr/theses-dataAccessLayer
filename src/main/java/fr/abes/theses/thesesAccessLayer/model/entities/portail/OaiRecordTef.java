@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "OAIRECORD_TEF")
@@ -23,6 +24,11 @@ public class OaiRecordTef implements Serializable, GenericEntity<Integer> {
     private Calendar dateInsertion;
     @Column(name = "OAIIDENTIFIER")
     private String oaiIdentifier;
+
+    @OneToMany(mappedBy = "oaiRecordId")
+    private Set<RecSetTef> recSetTefs;
+    @OneToMany(mappedBy = "oaiRecordId")
+    private Set<MetadataTef> metadataTefs;
 
     public OaiRecordTef(Integer oaiRecordId, Calendar dateInsertion, String oaiIdentifier) {
         this.oaiRecordId = oaiRecordId;

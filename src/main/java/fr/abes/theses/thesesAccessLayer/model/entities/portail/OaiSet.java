@@ -27,7 +27,9 @@ public class OaiSet implements Serializable, GenericEntity<Integer> {
     @OneToMany(mappedBy = "setId")
     private Set<RecSetMarc> recSetMarcs;
     @OneToMany(mappedBy = "setId")
-    private List<RecSetOaiDc> recSetOaiDcs;
+    private Set<RecSetOaiDc> recSetOaiDcs;
+    @OneToMany(mappedBy = "setId")
+    private Set<RecSetTef> recSetTefs;
 
     public OaiSet(Integer setId, String setSpec, String setName, String setDescription) {
         this.setId = setId;

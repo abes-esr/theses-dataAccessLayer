@@ -34,8 +34,6 @@ public class IRecSetMarcDaoTest {
 
     @BeforeEach
     public void init() {
-        this.recSetMarc = getRecSetMarc();
-
         this.oaiRecordMarc = new OaiRecordMarc();
         this.oaiRecordMarc.setOaiRecordId(1);
         this.oaiRecordMarc.setOaiIdentifier("test");
@@ -47,26 +45,32 @@ public class IRecSetMarcDaoTest {
         this.oaiSet.setSetName("test");
         this.oaiSet.setSetId(99999);
         this.oaiSetDao.save(this.oaiSet);
+
+        this.recSetMarc = getRecSetMarc();
     }
 
     @AfterEach
     public void end(){
-        recSetMarcDao.delete(recSetMarc);
-        oaiSetDao.delete(oaiSet);
-        oaiRecordMarcDao.delete(oaiRecordMarc);
+        recSetMarcDao.delete(this.recSetMarc);
+        oaiSetDao.delete(this.oaiSet);
+        oaiRecordMarcDao.delete(this.oaiRecordMarc);
     }
 
     @Test
     public void testFindRecSetMarc() {
         RecSetMarc recSetMarcIn = recSetMarcDao.save(recSetMarc);
         RecSetMarc recSetMarcOut = recSetMarcDao.findById(recSetMarcIn.getId()).get();
-        assertThat(recSetMarcOut.getId()).isEqualTo(recSetMarcIn.getId());
+        assertThat(recSetMarcOut.getId().getOaiRecordId()).isEqualTo(recSetMarcIn.getId().getOaiRecordId());
+        assertThat(recSetMarcOut.getId().getSetId()).isEqualTo(recSetMarcIn.getId().getSetId());
+        assertThat(recSetMarcOut.getDateInsertion()).isEqualTo(recSetMarcIn.getDateInsertion());
     }
 
     @Test
     public void testSaveRecSetMarc() {
         RecSetMarc recSetMarcIn = recSetMarcDao.save(this.recSetMarc);
-        assertThat(recSetMarcIn.getId()).isEqualTo(this.recSetMarc.getId());
+        assertThat(recSetMarcIn.getId().getOaiRecordId()).isEqualTo(this.recSetMarc.getId().getOaiRecordId());
+        assertThat(recSetMarcIn.getId().getSetId()).isEqualTo(this.recSetMarc.getId().getSetId());
+        assertThat(recSetMarcIn.getDateInsertion()).isEqualTo(this.recSetMarc.getDateInsertion());
     }
 
     @Test

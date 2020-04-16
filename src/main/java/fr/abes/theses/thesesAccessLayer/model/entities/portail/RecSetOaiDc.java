@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 @Entity
@@ -30,9 +31,9 @@ public class RecSetOaiDc implements Serializable, GenericEntity<RecSetId> {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATEINSERTION")
-    private Date dateInsertion;
+    private Calendar dateInsertion;
 
-    public RecSetOaiDc(OaiRecordOaiDc oaiRecordId, OaiSet setId, Date dateInsertion) {
+    public RecSetOaiDc(OaiRecordOaiDc oaiRecordId, OaiSet setId, Calendar dateInsertion) {
         this.oaiRecordId = oaiRecordId;
         this.setId = setId;
         this.dateInsertion = dateInsertion;

@@ -30,6 +30,9 @@ public class OaiRecordMarc implements Serializable, GenericEntity<Integer> {
     @OneToMany(mappedBy = "oaiRecordId")
     private Set<RecSetMarc> recSetMarcs;
 
+    @OneToMany(mappedBy = "oaiRecordId")
+    private Set<MetadataMarc> metadataMarcs;
+
     public OaiRecordMarc(Integer oaiRecordId, Calendar dateInsertion, String oaiIdentifier) {
         this.oaiRecordId = oaiRecordId;
         this.dateInsertion = dateInsertion;

@@ -60,6 +60,7 @@ public class IResumptionTokenDaoTest {
         resumptionToken.setExpirationDate(new GregorianCalendar());
         resumptionToken.setSetId(0);
         resumptionToken.setPreviousRecordId(100);
+        resumptionToken.setRtCursor(1);
         return resumptionToken;
     }
 }

@@ -23,12 +23,6 @@ public class DaoPortailProvider {
     private IEtablissementDao etablissementDao;
 
     @Resource
-    private ILogImportSudocErrorDao logImportSudocErrorDao;
-
-    @Resource
-    private ILogImportSudocStepDao logImportSudocStepDao;
-
-    @Resource
     private IMetadataFormatDao metadataFormatDao;
 
     @Resource
