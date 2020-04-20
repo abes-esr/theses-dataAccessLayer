@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Table(name = "METADATA_OAI_DC")
 @NoArgsConstructor
 @Getter @Setter
-@SequenceGenerator(name = "SEQ_METADATA_OAI_DC")
+@SequenceGenerator(name = "SEQ_METADATA_OAI_DC", sequenceName = "SEQ_METADATA_OAI_DC", initialValue = 1, allocationSize = 1)
 public class MetadataOaiDc implements Serializable, GenericEntity<Integer> {
     @Id
     @Column(name = "ID_METADATA_OAI_DC")

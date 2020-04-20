@@ -14,7 +14,7 @@ import java.util.Date;
 @Table(name = "COMPTE")
 @NoArgsConstructor
 @Getter @Setter
-@SequenceGenerator(name = "SEQ_COMPTE")
+@SequenceGenerator(name = "SEQ_COMPTE", sequenceName = "SEQ_COMPTE", initialValue = 1, allocationSize = 1)
 @IdClass(CompteId.class)
 public class ComptePortail implements Serializable, GenericEntity<CompteId> {
     @Id

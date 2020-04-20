@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Table(name = "METADATA_MARC")
 @NoArgsConstructor
 @Getter @Setter
-@SequenceGenerator(name = "SEQ_METADATA_MARC")
+@SequenceGenerator(name = "SEQ_METADATA_MARC", sequenceName = "SEQ_METADATA_MARC", allocationSize = 1, initialValue = 1)
 public class MetadataMarc implements Serializable, GenericEntity<Integer> {
     @Id
     @Column(name = "ID_METADATA_MARC")

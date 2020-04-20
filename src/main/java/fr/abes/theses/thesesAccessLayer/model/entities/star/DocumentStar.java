@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Table(name = "DOCUMENT")
 @NoArgsConstructor
 @Getter @Setter
-@SequenceGenerator(name = "SEQ_DOC")
+@SequenceGenerator(name = "SEQ_DOC", sequenceName = "SEQ_DOC", initialValue = 1, allocationSize = 1)
 public class DocumentStar implements Serializable, GenericEntity<Integer> {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_DOC")

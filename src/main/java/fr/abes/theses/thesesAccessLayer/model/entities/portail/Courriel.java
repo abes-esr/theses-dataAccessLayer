@@ -14,7 +14,7 @@ import java.util.Date;
 @Table(name = "COURRIEL")
 @NoArgsConstructor
 @Getter @Setter
-@SequenceGenerator(name = "SEQ_COURRIEL")
+@SequenceGenerator(name = "SEQ_COURRIEL", sequenceName = "COURRIEL_SEQ", initialValue = 1, allocationSize = 1)
 public class Courriel implements Serializable, GenericEntity<Integer> {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_COURRIEL")

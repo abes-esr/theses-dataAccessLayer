@@ -12,10 +12,10 @@ import java.io.Serializable;
 @Table(name = "ANRT_CORRESP")
 @NoArgsConstructor
 @Getter @Setter
-@SequenceGenerator(name = "SEQ_ANRT")
+@SequenceGenerator(name = "SEQ_ANRT", sequenceName = "SEQ_ANRT", initialValue = 1, allocationSize = 1)
 public class AnrtCorresp implements Serializable, GenericEntity<Integer> {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_ANRT")
+    @GeneratedValue(strategy=GenerationType.AUTO, generator="SEQ_ANRT")
     @Column(name = "ID_ANRT")
     private Integer idAnrt;
     @Column(name = "NNT")

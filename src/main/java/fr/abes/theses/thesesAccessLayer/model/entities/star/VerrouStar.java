@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Table(name = "VERROU")
 @NoArgsConstructor
 @Getter @Setter
-@SequenceGenerator(name = "SEQ_VERROU")
+@SequenceGenerator(name = "SEQ_VERROU", sequenceName = "SEQ_VERROU", initialValue = 1, allocationSize = 1)
 public class VerrouStar implements Serializable, GenericEntity<Integer> {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_VERROU")

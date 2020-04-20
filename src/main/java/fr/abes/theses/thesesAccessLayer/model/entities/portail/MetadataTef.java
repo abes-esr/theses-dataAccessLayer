@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Table(name = "METADATA_TEF")
 @NoArgsConstructor
 @Getter @Setter
-@SequenceGenerator(name = "SEQ_METADATA_TEF")
+@SequenceGenerator(name = "SEQ_METADATA_TEF", sequenceName = "SEQ_METADATA_TEF", initialValue = 1, allocationSize = 1)
 public class MetadataTef implements Serializable, GenericEntity<Integer> {
     @Id
     @Column(name = "ID_METADATA_TEF")

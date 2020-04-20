@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Table(name = "COMMENTAIRES")
 @NoArgsConstructor
 @Getter @Setter
-@SequenceGenerator(name = "SEQ_COMMENTAIRES")
+@SequenceGenerator(name = "SEQ_COMMENTAIRES", sequenceName = "SEQ_COMMENTAIRES", initialValue = 1, allocationSize = 1)
 public class Commentaires implements Serializable, GenericEntity<Integer> {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_COMMENTAIRES")
