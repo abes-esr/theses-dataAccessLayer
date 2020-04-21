@@ -33,7 +33,7 @@ public class ICommentairesDaoTest {
     }
 
     @Test
-    public void testFindCommentaire() {
+    public void testfindById() {
         Commentaires commentaireIn = commentairesDao.save(commentaire);
         Commentaires commentaireOut = commentairesDao.findById(commentaireIn.getId()).get();
         assertThat(commentaireOut.getId()).isEqualTo(commentaireIn.getId());
@@ -41,14 +41,14 @@ public class ICommentairesDaoTest {
     }
 
     @Test
-    public void testSaveCommentaire() {
+    public void testSave() {
         Commentaires commentaireIn = commentairesDao.save(commentaire);
         assertThat(commentaireIn.getId()).isEqualTo(commentaire.getId());
         assertThat(commentaireIn.getDisplayName()).isEqualTo(commentaire.getDisplayName());
     }
 
     @Test
-    public void deleteById() {
+    public void testDeleteById() {
         Commentaires commentaireIn = commentairesDao.save(commentaire);
         commentairesDao.deleteById(commentaireIn.getId());
         assertThat(commentairesDao.findById(commentaireIn.getId())).isEmpty();

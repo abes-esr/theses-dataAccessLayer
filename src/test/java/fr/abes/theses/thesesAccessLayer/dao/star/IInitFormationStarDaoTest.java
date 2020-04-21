@@ -1,7 +1,10 @@
 package fr.abes.theses.thesesAccessLayer.dao.star;
 
 import fr.abes.theses.thesesAccessLayer.ThesesAccessLayerApplication;
-import fr.abes.theses.thesesAccessLayer.model.entities.star.InitFormationStep;
+import fr.abes.theses.thesesAccessLayer.model.entities.star.DocumentStar;
+import fr.abes.theses.thesesAccessLayer.model.entities.star.EtablissementStar;
+import fr.abes.theses.thesesAccessLayer.model.entities.star.InitFormationStar;
+import fr.abes.theses.thesesAccessLayer.model.types.HibernateXMLType;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,6 +19,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import java.io.File;
 import java.io.IOException;
 
@@ -25,7 +29,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(classes = ThesesAccessLayerApplication.class)
 @EnableTransactionManagement
 public class IInitFormationStarDaoTest {
-    private InitFormationStep initFormation;
+    private InitFormationStar initFormation;
 
     @Autowired
     private IInitFormationStarDao initFormationDao;
@@ -41,21 +45,31 @@ public class IInitFormationStarDaoTest {
     }
 
     @Test
-    public void findEtablissementTest() {
-        InitFormationStep initFormationIn = initFormationDao.save(initFormation);
-        InitFormationStep initFormationOut = initFormationDao.findById(initFormationIn.getId()).get();
+    public void testFindById() throws TransformerException {
+        InitFormationStar initFormationIn = initFormationDao.save(initFormation);
+        InitFormationStar initFormationOut = initFormationDao.findById(initFormationIn.getId()).get();
         assertThat(initFormationOut.getCodeEtab()).isEqualTo(initFormationIn.getCodeEtab());
-        assertThat(initFormationOut.getDoc()).isEqualTo(initFormationIn.getDoc());
+        assertThat(HibernateXMLType.domToString(initFormationOut.getDoc())).isEqualTo(HibernateXMLType.domToString(initFormationIn.getDoc()));
     }
 
-    private InitFormationStep getInitFormation() throws IOException, SAXException, ParserConfigurationException {
-        InitFormationStep initFormation = new InitFormationStep();
+    @Test
+    public void testDeleteById() {
+        InitFormationStar initFormationStar = initFormationDao.save(initFormation);
+        initFormationDao.deleteById(initFormationStar.getId());
+        assertThat(initFormationDao.findById(initFormationStar.getId())).isEmpty();
+    }
+
+
+    private InitFormationStar getInitFormation() throws IOException, SAXException, ParserConfigurationException {
+        String filePath = getClass().getClassLoader().getResource("initFormation.xml").getPath();
+        File fXmlFile = new File(filePath);
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(fXmlFile);
+        InitFormationStar initFormation = new InitFormationStar();
+        initFormation.setIdDoc(999999);
         initFormation.setCodeEtab("TEST");
-        File xml = new File(getClass().getClassLoader().getResource("initFormation.xml").getPath());
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder docBuilder = factory.newDocumentBuilder();
-        Document doc = docBuilder.parse(xml) ;
-        initFormation.setDoc(doc.toString());
+        initFormation.setDoc(doc);
         return initFormation;
     }
 }

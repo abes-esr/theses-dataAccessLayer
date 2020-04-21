@@ -1,13 +1,12 @@
 package fr.abes.theses.thesesAccessLayer.model.entities.star;
 
 import fr.abes.theses.thesesAccessLayer.model.entities.GenericEntity;
+import fr.abes.theses.thesesAccessLayer.model.types.HibernateXMLType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnTransformer;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
-import org.hibernate.annotations.TypeDefs;
 import org.w3c.dom.Document;
 
 import javax.persistence.*;
@@ -18,16 +17,16 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Getter @Setter
 @SequenceGenerator(name = "SEQ_DOC", sequenceName = "SEQ_DOC", initialValue = 1, allocationSize = 1)
+@TypeDef(name = "HibernateXMLType", typeClass = HibernateXMLType.class)
 public class DocumentStar implements Serializable, GenericEntity<Integer> {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_DOC")
     @Column(name = "IDDOC")
     private Integer idDoc;
 
-    @ColumnTransformer(read = "NVL2(DOC, (DOC).getClobVal(), NULL)", write = "NULLSAFE_XMLTYPE(?)")
-    @Lob
+    @Type(type = "HibernateXMLType")
     @Column(name = "DOC")
-    private String doc;
+    private Document doc;
 
     @Column(name = "TEXTE")
     private String texte;
@@ -38,7 +37,7 @@ public class DocumentStar implements Serializable, GenericEntity<Integer> {
     @Column(name = "ENVOISOLR")
     private Integer envoiSolr;
 
-    public DocumentStar(Integer idDoc, String doc, String texte, String codeEtab, Integer envoiSolr) {
+    public DocumentStar(Integer idDoc, Document doc, String texte, String codeEtab, Integer envoiSolr) {
         this.idDoc = idDoc;
         this.doc = doc;
         this.texte = texte;

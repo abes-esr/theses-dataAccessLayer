@@ -1,12 +1,11 @@
 package fr.abes.theses.thesesAccessLayer.dao.star;
 
 import fr.abes.theses.thesesAccessLayer.ThesesAccessLayerApplication;
+import fr.abes.theses.thesesAccessLayer.dao.step.IDocumentStepDao;
 import fr.abes.theses.thesesAccessLayer.model.entities.star.DocumentStar;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.io.SAXReader;
+import fr.abes.theses.thesesAccessLayer.model.entities.star.EtablissementStar;
+import fr.abes.theses.thesesAccessLayer.model.types.HibernateXMLType;
 import org.jdom2.JDOMException;
-import org.jdom2.input.SAXBuilder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +14,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
@@ -25,46 +35,45 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(classes = ThesesAccessLayerApplication.class)
 @EnableTransactionManagement
 public class IDocumentStarDaoTest {
-    public DocumentStar document;
+    private DocumentStar documentStar;
 
     @Autowired
-    private IDocumentStarDao documentDao;
+    private IDocumentStarDao documentStarDao;
 
     @BeforeEach
-    public void init() throws DocumentException, JDOMException, IOException {
-        document = getDocument();
+    public void init() throws ParserConfigurationException, SAXException, IOException, JDOMException {
+        documentStar = getDocumentStar();
     }
 
     @AfterEach
     public void end() {
-        documentDao.delete(document);
+        documentStarDao.delete(documentStar);
     }
 
     @Test
-    public void testFindDocument() {
-        DocumentStar docInDb = documentDao.save(document);
-        DocumentStar docOutDb = documentDao.findById(docInDb.getIdDoc()).get();
-        assertThat(docOutDb.getId()).isEqualTo(docInDb.getId());
-        assertThat(docOutDb.getDoc()).isEqualTo(docInDb.getDoc());
+    public void testfindById() throws TransformerException {
+        DocumentStar documentIn = documentStarDao.save(documentStar);
+        DocumentStar documentOut = documentStarDao.findById(documentIn.getId()).get();
+        assertThat(documentOut.getEnvoiSolr()).isEqualTo(documentIn.getEnvoiSolr());
+        assertThat(HibernateXMLType.domToString(documentOut.getDoc())).isEqualTo(HibernateXMLType.domToString(documentIn.getDoc()));
     }
 
     @Test
     public void testDeleteById() {
-        DocumentStar documentOut = documentDao.save(document);
-        documentDao.deleteById(documentOut.getId());
-        assertThat(documentDao.findById(documentOut.getId())).isEmpty();
+        DocumentStar documentStarIn = documentStarDao.save(documentStar);
+        documentStarDao.deleteById(documentStarIn.getId());
+        assertThat(documentStarDao.findById(documentStarIn.getId())).isEmpty();
     }
 
-    private DocumentStar getDocument() throws DocumentException, JDOMException, IOException {
-        DocumentStar document = new DocumentStar();
-        document.setCodeEtab("CAEN");
-        document.setEnvoiSolr(0);
-        document.setTexte("test");
+    private DocumentStar getDocumentStar() throws IOException, SAXException, ParserConfigurationException, JDOMException {
+        DocumentStar documentStar = new DocumentStar();
+        documentStar.setEnvoiSolr(1);
         String filePath = getClass().getClassLoader().getResource("tef.xml").getPath();
-        SAXBuilder saxBuilder = new SAXBuilder();
-        org.jdom2.Document jdomDoc = saxBuilder.build(new File(filePath));
-        document.setDoc(jdomDoc.toString());
-
-        return document;
+        File fXmlFile = new File(filePath);
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(fXmlFile);
+        documentStar.setDoc(doc);
+        return documentStar;
     }
 }

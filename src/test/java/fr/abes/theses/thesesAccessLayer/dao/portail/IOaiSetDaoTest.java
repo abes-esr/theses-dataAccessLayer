@@ -33,7 +33,7 @@ public class IOaiSetDaoTest {
     }
 
     @Test
-    public void testFindOaiRecord() {
+    public void testfindById() {
         OaiSet oaiSetIn = oaiSetDao.save(oaiSet);
         OaiSet oaiSetOut = oaiSetDao.findById(oaiSetIn.getId()).get();
         assertThat(oaiSetOut.getId()).isEqualTo(oaiSetIn.getId());
@@ -41,14 +41,14 @@ public class IOaiSetDaoTest {
     }
 
     @Test
-    public void testSaveOaiRecord() {
+    public void testSave() {
         OaiSet oaiSet = oaiSetDao.save(this.oaiSet);
         assertThat(oaiSet.getId()).isEqualTo(this.oaiSet.getId());
         assertThat(oaiSet.getSetName()).isEqualTo(this.oaiSet.getSetName());
     }
 
     @Test
-    public void deleteById() {
+    public void testDeleteById() {
         OaiSet oaiRecordIn = oaiSetDao.save(oaiSet);
         oaiSetDao.deleteById(oaiRecordIn.getId());
         assertThat(oaiSetDao.findById(oaiRecordIn.getId())).isEmpty();

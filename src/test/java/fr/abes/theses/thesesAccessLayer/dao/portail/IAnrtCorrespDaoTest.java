@@ -35,7 +35,7 @@ public class IAnrtCorrespDaoTest {
 
     @Test
     @Transactional
-    public void testSaveOaiRecord() {
+    public void testSave() {
         AnrtCorresp anrt = anrtCorrespDao.save(anrtCorresp);
         assertThat(anrt.getId()).isEqualTo(anrtCorresp.getId());
         assertThat(anrt.getNnt()).isEqualTo(anrtCorresp.getNnt());
@@ -44,7 +44,7 @@ public class IAnrtCorrespDaoTest {
 
     @Test
     @Transactional
-    public void deleteById() {
+    public void testDeleteById() {
         AnrtCorresp anrt = anrtCorrespDao.saveAndFlush(anrtCorresp);
         anrtCorrespDao.deleteById(anrt.getId());
         assertThat(anrtCorrespDao.findById(anrt.getId())).isEmpty();
@@ -53,7 +53,7 @@ public class IAnrtCorrespDaoTest {
 
     @Test
     @Transactional
-    public void testFindOaiRecord() {
+    public void testFindById() {
         AnrtCorresp anrtIn = anrtCorrespDao.save(anrtCorresp);
         AnrtCorresp anrtOut = anrtCorrespDao.findById(anrtIn.getId()).get();
         assertThat(anrtOut.getId()).isEqualTo(anrtIn.getId());

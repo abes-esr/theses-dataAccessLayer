@@ -33,7 +33,7 @@ public class IZonePrioritaireDaoTest {
     }
 
     @Test
-    public void testFindCompte() {
+    public void testFindById() {
         ZonePrioritaire zonePrioritaireIn = zonePrioritaireDao.save(zonePrioritaire);
         ZonePrioritaire zonePrioritaireOut = zonePrioritaireDao.findById(zonePrioritaireIn.getId()).get();
         assertThat(zonePrioritaireOut.getId()).isEqualTo(zonePrioritaireIn.getId());
@@ -41,14 +41,14 @@ public class IZonePrioritaireDaoTest {
     }
 
     @Test
-    public void testSaveCompte() {
+    public void testSave() {
         ZonePrioritaire ZonePrioritaireIn = zonePrioritaireDao.save(zonePrioritaire);
         assertThat(ZonePrioritaireIn.getId()).isEqualTo(zonePrioritaire.getId());
         assertThat(ZonePrioritaireIn.getLabelZone()).isEqualTo(zonePrioritaire.getLabelZone());
     }
 
     @Test
-    public void deleteById() {
+    public void testDeleteById() {
         ZonePrioritaire zonePrioritaireIn = zonePrioritaireDao.save(zonePrioritaire);
         zonePrioritaireDao.deleteById(zonePrioritaireIn.getId());
         assertThat(zonePrioritaireDao.findById(zonePrioritaireIn.getId())).isEmpty();

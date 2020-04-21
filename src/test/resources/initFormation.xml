@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mets:mets xmlns:mets="http://www.loc.gov/METS/" xmlns:dc="http://purl.org/dc/elements/1.1/"
+           xmlns:dcterms="http://purl.org/dc/terms/" xmlns:tef="http://www.abes.fr/abes/documents/tef"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink"
+           xmlns:metsRights="http://cosimo.stanford.edu/sdr/metsrights/" xmlns:mads="http://www.loc.gov/mads/"
+           xsi:schemaLocation="http://www.loc.gov/METS/ http://www.abes.fr/abes/documents/tef/recommandation/tef_schemas.xsd">
+    <mets:metsHdr ID="ABES.STAR.THESE_10574.METS_HEADER" CREATEDATE="2010-11-17T11:58:10"
+                  LASTMODDATE="2010-11-17T13:01:34" RECORDSTATUS="valide">
+        <mets:agent ROLE="CREATOR">
+            <mets:name/>
+            <mets:note>Note</mets:note>
+        </mets:agent>
+        <mets:agent ROLE="DISSEMINATOR">
+            <mets:name>ABES</mets:name>
+        </mets:agent>
+        <mets:altRecordID ID="ABES.STAR.THESE_10574.METS_HEADER.ALTERNATE" TYPE=""/>
+    </mets:metsHdr>
+    <mets:dmdSec ID="ABES.STAR.THESE_10574.gestionSTAR">
+        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="tef_gestionSTAR">
+            <mets:xmlData>
+                <star_gestion codeEtab="SESE" libEtab="Session de formation rôle éclaté" ppnEtab="123456789"
+                              enProd="non" ID_THESE="THESE_10574" scenarioEtab="cas5" etat="WFpreArchivage"
+                              xsi:noNamespaceSchemaLocation="http://www.abes.fr/abes/documents/pth/tef_gestion.xsd">
+                    <traitements scenario="cas1">
+                        <entree type="editeur" date="2010-11-17T11:58:10" agentImport="" completudeImport="sansObjet"/>
+                        <maj date="2010-11-17T13:01:34" import="non" SCOL="non" BIBL="non" FICH="oui" VALID="non"/>
+                        <facile date="2010-11-17T13:00:38" indicFacile="OK" trace="" import="non" SCOL="non" BIBL="non"
+                                FICH="oui" VALID="non"/>
+                        <ctrlUrl indicCtrlUrl="sansObjet" erreurUrl="sansObjet" compteIndicCtrlUrlKO="0" date=""/>
+                        <remonteeArchive indicRemonteeArchive="sansObjet" date="" trace=""/>
+                        <purge indicPurge="sansObjet" date=""/>
+                        <invalidation indicInvalidation="sansObjet" date="" note=""/>
+                        <sorties date="">
+                            <cines numeroPAC="" dateCines="" indicCines="sansObjet" trace=""/>
+                            <sudoc PPN="" dateSudoc="" indicSudoc="sansObjet" majSudoc="" trace="">
+                                <RCR code=""/>
+                                <EPN/>
+                            </sudoc>
+                            <diffusion urlPerenne="http://www.theses.fr/2016SESE0001" conformitePolDiffusion="oui"
+                                       typeDiffusion="internet" restrictionTemporelleType="sansObjet"
+                                       restrictionTemporelleFin="">
+                                <etabDiffuseur etabDiffuseurPolEtablissement="oui" editeurScientifiqueLieu=""
+                                               editeurScientifiqueNom="">
+                                    <urlEtabDiffuseur majUrlEtabDiffuseur=""/>
+                                </etabDiffuseur>
+                                <abesDiffuseur abesDiffuseurPolEtablissement="non" FichEtabDiffAbesIntranet="non"
+                                               indicAbesDiffuseur="oui" dateAbesDiffuseur="" majAbesDiffuseur=""
+                                               urlAbesDiffuseur=""/>
+                                <ccsd ccsdDiffuseurPolEtablissement="non" indicCcsd="sansObjet" identifiantCcsd=""
+                                      pwdCcsd="" urlCcsd="" numVersion="" dateCcsd="" majCcsd=""/>
+                                <autresEtabDiffuseurs/>
+                                <oai majOai="" dateOai="" indicOai="sansObjet"/>
+                            </diffusion>
+                        </sorties>
+                    </traitements>
+                    <workflow etatWF="preEnValidation">
+                        <commentaires nbCommentaires="0"/>
+                        <DOCT interventionFicheEtablissement="oui" etatDOCT="nonModifiable" majDOCT=""/>
+                        <rolesMD>
+                            <SCOL etatMD="preEnValidation" majMD="2010-11-17T12:17:51" indicBilan="sansObjet" bilan="">
+                                <notes nbNotes="0">
+                                    <note date="" contenu=""/>
+                                </notes>
+                            </SCOL>
+                            <BIBL etatMD="preEnValidation" majMD="2010-11-17T12:36:28" indicBilan="sansObjet" bilan=""
+                                  indicTheseTravaux="non">
+                                <notes nbNotes="0">
+                                    <note date="" contenu=""/>
+                                </notes>
+                            </BIBL>
+                            <FICH etatMD="preEnValidation" majMD="2010-11-17T13:01:32" indicBilan="sansObjet" bilan=""
+                                  alerteTheseTravaux="non">
+                                <notes nbNotes="0">
+                                    <note date="" contenu=""/>
+                                </notes>
+                            </FICH>
+                        </rolesMD>
+                        <VALID validIndependant="oui" etatVALID="preAtraiter" majVALID="">
+                            <notes nbNotes="0">
+                                <note date="" contenu=""/>
+                            </notes>
+                            <refusValidationIntermediaire nbRefus="0">
+                                <refus date="" contenu="" SCOL="non" FICH="non" BIBL="non"/>
+                            </refusValidationIntermediaire>
+                        </VALID>
+                    </workflow>
+                </star_gestion>
+            </mets:xmlData>
+        </mets:mdWrap>
+    </mets:dmdSec>
+    <mets:dmdSec ID="ABES.STAR.THESE_10574.DESCRIPTION_BIBLIOGRAPHIQUE">
+        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="tef_desc_these">
+            <mets:xmlData>
+                <tef:thesisRecord>
+                    <dc:title xml:lang="fr">Réflexion et diffusion des vagues par une topographie marine</dc:title>
+                    <dcterms:alternative xml:lang="en">Reflexion and scattering of waves by a marine topographie
+                    </dcterms:alternative>
+                    <dc:subject xml:lang="fr">Topographie</dc:subject>
+                    <dc:subject xml:lang="fr">Vagues</dc:subject>
+                    <tef:sujetRameau xml:lang="fr">
+                        <tef:vedetteRameauNomCommun>
+                            <tef:elementdEntree autoriteExterne="027623009" autoriteSource="Sudoc">Topographie
+                                sous-marine
+                            </tef:elementdEntree>
+                            <tef:subdivision autoriteExterne="027485404" autoriteSource="Sudoc"
+                                             type="subdivisionDeSujet">Mer du Nord
+                            </tef:subdivision>
+                        </tef:vedetteRameauNomCommun>
+                    </tef:sujetRameau>
+                    <dcterms:abstract xml:lang="fr">A l&apos;approche de la côte la houle est fortement modifiée par la
+                        topographie sous-marine. Si la réfraction est souvent le phénomène majeur, il existe d&apos;autres
+                        phénomènes moins connus comme la réflexion ou plus généralement la diffusion des vagues par le
+                        fond qui peuvent se révéler tout aussi importants. La modélisation des vagues dans ces zones est
+                        d&apos;autant plus délicate que les courants peuvent y être importants, ce qui complique la
+                        propagation de la houle.La diffusion des vagues par la topographie sous-marine est étudiée par
+                        une approche spectrale via un terme de source facilement introduit dans les modèles de vagues
+                        spectraux opérationnels. Cette approche peu coûteuse numériquement, représente la topographie
+                        par son spectre de variance. Elle se révèle particulièrement précise lorsque les amplitudes du
+                        fond sont faibles, et s&apos;applique aussi à des fonds localisés. Pour de grandes amplitudes,
+                        comme un canyon sous-marin, l&apos;évolution des vagues est bien représentée avec un modèle
+                        elliptique déterministe aux modes couplés, mettant en avant l&apos;importance de la réflexion
+                        dans le processus de transmission au-dessus de cet obstacle. L&apos;effet du courant sur la
+                        diffusion des vagues est ensuite examiné. Le décalage des fréquences résonantes pour des vagues
+                        se propageant au-dessus d&apos;un fond sinusoidal en présence d&apos;un courant uniforme,
+                        calculé théoriquement, est mis en évidence expérimentalement lors d&apos;une campagne de mesure
+                        en bassin. La prise en compte du courant dans le terme de source permet la mise en évidence des
+                        effets du courant sur la diffusion des vagues par des fonds aléatoires. Des expériences
+                        numériques pour des vagues se propageant au-dessus de dunes sous-marines balayées par des
+                        courants de marée importants (bathymétrie typique en Mer du Nord) ont montré un décalage
+                        important de la direction moyenne de propagation ainsi qu&apos;un fort élargissement du spectre
+                        directionnel
+                    </dcterms:abstract>
+                    <dcterms:abstract xml:lang="en">Waves entering in shallow water are largely modified by the
+                        submarine topography. If refraction plays the major role in this process, other less known
+                        phenomena like wave reflection or more generally wave-bottom scattering can be significant. The
+                        Modelling of wave propagation in such areas is as much complicated by strong currents,
+                        particularly tidal currents. Wave-bottom scattering is investigated from a spectral approach
+                        with a source term, easily introduced in operationals spectrals wave models. This numerically
+                        efficient approach is found to be accurate, particularly when the bottom amplitudes are small,
+                        and is also valid for localized scatterers. For large amplitude topographies, as a submarine
+                        canyon, the wave evolution is accurately represented with a deterministic coupled-mode elliptic
+                        model, and the importance of the reflection in the transmission process over this obstacle is
+                        highlighted. The current effect on the wave-bottom scattering is then investigated. The shift of
+                        the resonant wave frequencies for waves propagating over sinusoidal bottom in presence of a
+                        uniform current is calculated theoretically, and verified experimentally in the laboratory. A
+                        theory for the scattering of waves in the presence of a uniform current is developped for
+                        application to the continental shelf. Numerical experiments for waves propagating over sand
+                        waves with large tidal currents (typical bathymetry in the North Sea) revealed an important
+                        shift for the mean wave direction, and a significant directional broadening for the surface
+                        spectrum.
+                    </dcterms:abstract>
+                    <dc:type>Electronic Thesis or Dissertation</dc:type>
+                    <dc:type xsi:type="dcterms:DCMIType">Text</dc:type>
+                    <dc:language xsi:type="dcterms:RFC3066">fr</dc:language>
+                </tef:thesisRecord>
+            </mets:xmlData>
+        </mets:mdWrap>
+    </mets:dmdSec>
+    <mets:dmdSec ID="ABES.STAR.THESE_10574.VERSION_COMPLETE.DESCRIPTION.EDITION_ARCHIVAGE">
+        <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="tef_desc_edition">
+            <mets:xmlData>
+                <tef:edition>
+                    <dcterms:medium xsi:type="dcterms:IMT">PDF</dcterms:medium>
+                    <dcterms:extent>45850</dcterms:extent>
+                    <dc:identifier xsi:type="dcterms:URI"/>
+                </tef:edition>
+            </mets:xmlData>
+        </mets:mdWrap>
+    </mets:dmdSec>
+    <mets:amdSec>
+        <mets:techMD ID="ABES.STAR.THESE_10574.ADMINISTRATION">
+            <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="tef_admin_these">
+                <mets:xmlData>
+                    <tef:thesisAdmin>
+                        <tef:auteur>
+                            <tef:nom>Lancelle_1</tef:nom>
+                            <tef:prenom>Jeannine</tef:prenom>
+                            <tef:nomDeNaissance>Lancelle_1</tef:nomDeNaissance>
+                            <tef:dateNaissance>1980-06-30</tef:dateNaissance>
+                            <tef:nationalite scheme="ISO-3166-1">FR</tef:nationalite>
+                            <tef:autoriteExterne autoriteSource="Sudoc">103289887</tef:autoriteExterne>
+                        </tef:auteur>
+                        <dc:identifier xsi:type="tef:NNT">2016SESE0001</dc:identifier>
+                        <dcterms:dateAccepted xsi:type="dcterms:W3CDTF">2016-09-01</dcterms:dateAccepted>
+                        <tef:thesis.degree>
+                            <tef:thesis.degree.discipline xml:lang="fr">Océanographie physique
+                            </tef:thesis.degree.discipline>
+                            <tef:thesis.degree.grantor>
+                                <tef:nom>Session de formation rôle éclaté</tef:nom>
+                                <tef:autoriteExterne autoriteSource="Sudoc">123456789</tef:autoriteExterne>
+                            </tef:thesis.degree.grantor>
+                            <tef:thesis.degree.level>Doctorat</tef:thesis.degree.level>
+                            <tef:thesis.degree.name xml:lang="fr">Docteur es</tef:thesis.degree.name>
+                        </tef:thesis.degree>
+                        <tef:theseSurTravaux>non</tef:theseSurTravaux>
+                        <tef:avisJury>oui</tef:avisJury>
+                        <tef:directeurThese>
+                            <tef:nom>Rey</tef:nom>
+                            <tef:prenom>Vincent</tef:prenom>
+                            <tef:autoriteInterne>MADS_DIRECTEUR_DE_THESE_1</tef:autoriteInterne>
+                            <tef:autoriteExterne autoriteSource="Sudoc">090213416</tef:autoriteExterne>
+                        </tef:directeurThese>
+                        <tef:oaiSetSpec>ddc:500</tef:oaiSetSpec>
+                        <tef:MADSAuthority authorityID="MADS_DIRECTEUR_DE_THESE_1" type="personal">
+                            <tef:personMADS>
+                                <mads:namePart type="family">Rey</mads:namePart>
+                                <mads:namePart type="given">Vincent</mads:namePart>
+                            </tef:personMADS>
+                        </tef:MADSAuthority>
+                    </tef:thesisAdmin>
+                </mets:xmlData>
+            </mets:mdWrap>
+        </mets:techMD>
+        <mets:techMD
+                ID="ABES.STAR.THESE_10574.VERSION_COMPLETE.EDITION_ARCHIVAGE.TECH_FICHIER.DOSSIER_1.DOSSIER_1.FICHIER_1">
+            <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="tef_tech_fichier">
+                <mets:xmlData>
+                    <tef:meta_fichier>
+                        <tef:encodage>ASCII</tef:encodage>
+                        <tef:formatFichier>PDF</tef:formatFichier>
+                        <tef:taille>45850</tef:taille>
+                    </tef:meta_fichier>
+                </mets:xmlData>
+            </mets:mdWrap>
+        </mets:techMD>
+        <mets:rightsMD ID="ABES.STAR.THESE_10574.DROITS_UNIVERSITE">
+            <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="tef_droits_etablissement_these">
+                <mets:xmlData>
+                    <metsRights:RightsDeclarationMD RIGHTSCATEGORY="CONTRACTUAL">
+                        <metsRights:Context CONTEXTCLASS="GENERAL PUBLIC">
+                            <metsRights:Permissions DISPLAY="true" DUPLICATE="true" PRINT="false" COPY="false"
+                                                    MODIFY="false" DELETE="false"/>
+                        </metsRights:Context>
+                        <metsRights:Context CONTEXTCLASS="INSTITUTIONAL AFFILIATE">
+                            <metsRights:Permissions DISPLAY="true" DUPLICATE="true" PRINT="false" COPY="false"
+                                                    MODIFY="false" DELETE="false"/>
+                        </metsRights:Context>
+                    </metsRights:RightsDeclarationMD>
+                </mets:xmlData>
+            </mets:mdWrap>
+        </mets:rightsMD>
+        <mets:rightsMD ID="ABES.STAR.THESE_10574.DROITS_DOCTORANT">
+            <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="tef_droits_auteur_these">
+                <mets:xmlData>
+                    <metsRights:RightsDeclarationMD RIGHTSCATEGORY="CONTRACTUAL">
+                        <metsRights:Context CONTEXTCLASS="GENERAL PUBLIC">
+                            <metsRights:Permissions DISPLAY="true" DUPLICATE="true" PRINT="false" COPY="false"
+                                                    MODIFY="false" DELETE="false"/>
+                        </metsRights:Context>
+                        <metsRights:Context CONTEXTCLASS="INSTITUTIONAL AFFILIATE">
+                            <metsRights:Permissions DISPLAY="true" DUPLICATE="true" PRINT="false" COPY="false"
+                                                    MODIFY="false" DELETE="false"/>
+                        </metsRights:Context>
+                    </metsRights:RightsDeclarationMD>
+                </mets:xmlData>
+            </mets:mdWrap>
+        </mets:rightsMD>
+        <mets:rightsMD ID="ABES.STAR.THESE_10574.VERSION_COMPLETE.DROITS">
+            <mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="tef_droits_version">
+                <mets:xmlData>
+                    <metsRights:RightsDeclarationMD RIGHTSCATEGORY="CONTRACTUAL">
+                        <metsRights:Context CONTEXTCLASS="GENERAL PUBLIC">
+                            <metsRights:Permissions DISPLAY="true" DUPLICATE="true" PRINT="false" COPY="false"
+                                                    MODIFY="false" DELETE="false"/>
+                        </metsRights:Context>
+                        <metsRights:Context CONTEXTCLASS="INSTITUTIONAL AFFILIATE">
+                            <metsRights:Permissions DISPLAY="true" DUPLICATE="true" PRINT="false" COPY="false"
+                                                    MODIFY="false" DELETE="false"/>
+                        </metsRights:Context>
+                    </metsRights:RightsDeclarationMD>
+                </mets:xmlData>
+            </mets:mdWrap>
+        </mets:rightsMD>
+    </mets:amdSec>
+    <mets:fileSec>
+        <mets:fileGrp USE="archive_et_diffusion" ID="ABES.STAR.THESE_10574.VERSION_COMPLETE.EDITION_ARCHIVAGE.FILEGRP">
+            <mets:file ID="ABES.STAR.THESE_10574.VERSION_COMPLETE.EDITION_ARCHIVAGE.DOSSIER_1.DOSSIER_1.FICHIER_1"
+                       ADMID="ABES.STAR.THESE_10574.VERSION_COMPLETE.EDITION_ARCHIVAGE.TECH_FICHIER.DOSSIER_1.DOSSIER_1.FICHIER_1"
+                       MIMETYPE="ASCII" SEQ="1">
+                <mets:FLocat LOCTYPE="URL" xlink:href="SESE/THESE_10574/document/0/0/Lancelle_Jeannine.pdf"/>
+            </mets:file>
+        </mets:fileGrp>
+    </mets:fileSec>
+    <mets:structMap TYPE="logical">
+        <mets:div TYPE="THESE" CONTENTIDS="CONTENTIDS.ABES.STAR.THESE_10574"
+                  DMDID="ABES.STAR.THESE_10574.DESCRIPTION_BIBLIOGRAPHIQUE"
+                  ADMID="ABES.STAR.THESE_10574.ADMINISTRATION ABES.STAR.THESE_10574.DROITS_UNIVERSITE ABES.STAR.THESE_10574.DROITS_DOCTORANT">
+            <mets:div TYPE="VERSION_COMPLETE"
+                      CONTENTIDS="CONTENTIDS.ABES.STAR.THESE_10574.ABES.STAR.THESE_10574.VERSION_COMPLETE"
+                      ADMID="ABES.STAR.THESE_10574.VERSION_COMPLETE.DROITS">
+                <mets:div TYPE="EDITION"
+                          CONTENTIDS="CONTENTIDS.ABES.STAR.THESE_10574.VERSION_COMPLETE.EDITION_ARCHIVAGE"
+                          DMDID="ABES.STAR.THESE_10574.VERSION_COMPLETE.DESCRIPTION.EDITION_ARCHIVAGE">
+                    <mets:fptr FILEID="ABES.STAR.THESE_10574.VERSION_COMPLETE.EDITION_ARCHIVAGE.FILEGRP"/>
+                </mets:div>
+            </mets:div>
+        </mets:div>
+    </mets:structMap>
+</mets:mets>

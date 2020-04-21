@@ -49,7 +49,7 @@ public class IMetadataMarcDaoTest {
 
     @Test
     @Transactional
-    public void testFindRecSetMarc() {
+    public void testfindById() {
         MetadataMarc metadataMarcIn = metadataMarcDao.save(this.metadataMarc);
         MetadataMarc metadataMarcOut = metadataMarcDao.findById(metadataMarcIn.getId()).get();
         assertThat(metadataMarcOut.getId()).isEqualTo(metadataMarcIn.getId());
@@ -58,7 +58,7 @@ public class IMetadataMarcDaoTest {
 
     @Test
     @Transactional
-    public void testSaveRecSetMarc() {
+    public void testSave() {
         MetadataMarc metadataMarc = metadataMarcDao.save(this.metadataMarc);
         assertThat(metadataMarc.getId()).isEqualTo(this.metadataMarc.getId());
         assertThat(metadataMarc.getMetadata()).isEqualTo(this.metadataMarc.getMetadata());

@@ -1,20 +1,24 @@
 package fr.abes.theses.thesesAccessLayer.model.entities.portail;
 
 import fr.abes.theses.thesesAccessLayer.model.entities.GenericEntity;
+import fr.abes.theses.thesesAccessLayer.model.types.HibernateXMLType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnTransformer;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.w3c.dom.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-
+@Entity
 @Table(name = "DOCUMENT")
 @NoArgsConstructor
-@Getter
-@Setter
+@Getter @Setter
+@TypeDef(name = "HibernateXMLType", typeClass = HibernateXMLType.class)
 public class DocumentPortail implements Serializable, GenericEntity<Integer> {
 
     @Id
@@ -24,10 +28,9 @@ public class DocumentPortail implements Serializable, GenericEntity<Integer> {
     @Column(name = "NNT")
     private String nnt;
 
-    @ColumnTransformer(read = "NVL2(DOC, (DOC).getClobVal(), NULL)", write = "NULLSAFE_XMLTYPE(?)")
-    @Lob
+    @Type(type = "HibernateXMLType")
     @Column(name = "DOC", columnDefinition = "XMLType")
-    private String doc;
+    private Document doc;
 
     @Column(name = "TEXTE")
     private String texte;
@@ -50,7 +53,7 @@ public class DocumentPortail implements Serializable, GenericEntity<Integer> {
     @Column(name = "ENVOISOLR")
     private boolean envoiSolr;
 
-    public DocumentPortail(Integer idDoc, String doc, String texte, String codeEtab, Date dateInsertion, Date dateDiffusion,
+    public DocumentPortail(Integer idDoc, Document doc, String texte, String codeEtab, Date dateInsertion, Date dateDiffusion,
                            String droits, String numSujet, boolean envoiSolr) {
         this.idDoc = idDoc;
         this.doc = doc;

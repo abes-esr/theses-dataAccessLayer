@@ -1,10 +1,14 @@
 package fr.abes.theses.thesesAccessLayer.model.entities.star;
 
 import fr.abes.theses.thesesAccessLayer.model.entities.GenericEntity;
+import fr.abes.theses.thesesAccessLayer.model.types.HibernateXMLType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnTransformer;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.w3c.dom.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,15 +18,15 @@ import java.sql.Clob;
 @Table(name = "INIT_FORMATION")
 @NoArgsConstructor
 @Getter @Setter
-public class InitFormationStep implements Serializable, GenericEntity<Integer> {
+@TypeDef(name = "HibernateXMLType", typeClass = HibernateXMLType.class)
+public class InitFormationStar implements Serializable, GenericEntity<Integer> {
     @Id
     @Column(name = "IDDOC")
     private Integer idDoc;
 
-    @ColumnTransformer(read = "NVL2(DOC, (DOC).getClobVal(), NULL)", write = "NULLSAFE_XMLTYPE(?)")
-    @Lob
+    @Type(type = "HibernateXMLType")
     @Column(name = "DOC", columnDefinition = "XMLType")
-    private String doc;
+    private Document doc;
 
     @Column(name = "TEXTE")
     @Lob
@@ -30,6 +34,13 @@ public class InitFormationStep implements Serializable, GenericEntity<Integer> {
 
     @Column(name = "CODEETAB")
     private String codeEtab;
+
+    public InitFormationStar(Integer idDoc, Document doc, Clob texte, String codeEtab) {
+        this.idDoc = idDoc;
+        this.doc = doc;
+        this.texte = texte;
+        this.codeEtab = codeEtab;
+    }
 
     @Override
     public Integer getId() {

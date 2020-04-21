@@ -1,4 +1,7 @@
 package fr.abes.theses.thesesAccessLayer.dao.step;
 
-public interface IEtablissementStepDao {
+import fr.abes.theses.thesesAccessLayer.model.entities.step.EtablissementStep;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface IEtablissementStepDao extends JpaRepository<EtablissementStep, String> {
 }

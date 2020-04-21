@@ -2,8 +2,8 @@ package fr.abes.theses.thesesAccessLayer.dao.star;
 
 import fr.abes.theses.thesesAccessLayer.ThesesAccessLayerApplication;
 import fr.abes.theses.thesesAccessLayer.model.entities.star.EtablissementStar;
+import fr.abes.theses.thesesAccessLayer.model.types.HibernateXMLType;
 import org.jdom2.JDOMException;
-import org.jdom2.input.SAXBuilder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,6 +18,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import java.io.File;
 import java.io.IOException;
 
@@ -43,20 +44,29 @@ public class IEtablissementStarDaoTest {
     }
 
     @Test
-    public void findEtablissementTest() {
+    public void testFindById() throws TransformerException {
         EtablissementStar etablissementIn = etablissementDao.save(etablissement);
         EtablissementStar etablissementout = etablissementDao.findById(etablissementIn.getId()).get();
         assertThat(etablissementout.getCode()).isEqualTo(etablissementIn.getCode());
-        assertThat(etablissementout.getFiche()).isEqualTo(etablissementIn.getFiche());
+        assertThat(HibernateXMLType.domToString(etablissementout.getFiche())).isEqualTo(HibernateXMLType.domToString(etablissementIn.getFiche()));
+    }
+
+    @Test
+    public void testDeleteById() {
+        EtablissementStar etablissementStarIn = etablissementDao.save(etablissement);
+        etablissementDao.deleteById(etablissementStarIn.getId());
+        assertThat(etablissementDao.findById(etablissementStarIn.getId())).isEmpty();
     }
 
     private EtablissementStar getEtablissement() throws IOException, SAXException, ParserConfigurationException, JDOMException {
         EtablissementStar etablissement = new EtablissementStar();
         etablissement.setCode("TEST");
         String filePath = getClass().getClassLoader().getResource("etablissement.xml").getPath();
-        SAXBuilder saxBuilder = new SAXBuilder();
-        org.jdom2.Document jdomDoc = saxBuilder.build(new File(filePath));
-        etablissement.setFiche(jdomDoc);
+        File fXmlFile = new File(filePath);
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+        Document doc = dBuilder.parse(fXmlFile);
+        etablissement.setFiche(doc);
         return etablissement;
     }
 }

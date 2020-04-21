@@ -33,7 +33,7 @@ public class IVerrouStepDaoTest {
     }
 
     @Test
-    public void testFindCompte() {
+    public void testFindById() {
         VerrouStep verrouIn = verrouDao.save(verrou);
         VerrouStep verrouOut = verrouDao.findById(verrouIn.getId()).get();
         assertThat(verrouOut.getId()).isEqualTo(verrouIn.getId());
@@ -41,14 +41,14 @@ public class IVerrouStepDaoTest {
     }
 
     @Test
-    public void testSaveCompte() {
+    public void testSave() {
         VerrouStep verrouIn = verrouDao.save(verrou);
         assertThat(verrouIn.getId()).isEqualTo(verrou.getId());
         assertThat(verrouIn.getNomTable()).isEqualTo(verrou.getNomTable());
     }
 
     @Test
-    public void deleteById() {
+    public void testDeleteById() {
         VerrouStep verrouIn = verrouDao.save(verrou);
         verrouDao.deleteById(verrouIn.getId());
         assertThat(verrouDao.findById(verrouIn.getId())).isEmpty();

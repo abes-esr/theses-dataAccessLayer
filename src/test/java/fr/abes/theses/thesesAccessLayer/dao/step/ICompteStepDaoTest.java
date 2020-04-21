@@ -35,21 +35,21 @@ public class ICompteStepDaoTest {
     }
 
     @Test
-    public void testFindCompte() {
+    public void testFindById() {
         CompteStep compteIn = compteDao.save(compte);
         CompteStep compteOut = compteDao.findById(compteIn.getId()).get();
         assertThat(compteOut.getId()).isEqualTo(compteIn.getId());
     }
 
     @Test
-    public void testSaveCompte() {
+    public void testSave() {
         CompteStep compteIn = compteDao.save(compte);
         assertThat(compteIn.getId()).isEqualTo(compte.getId());
         assertThat(compteIn.getDtCrea()).isEqualTo(compte.getDtCrea());
     }
 
     @Test
-    public void deleteById() {
+    public void testDeleteById() {
         CompteStep compteIn = compteDao.save(compte);
         compteDao.deleteById(compteIn.getId());
         assertThat(compteDao.findById(compteIn.getId())).isEmpty();

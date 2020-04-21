@@ -35,7 +35,7 @@ public class IDomaineHalDaoTest {
     }
 
     @Test
-    public void testFindDomaine() {
+    public void testFindById() {
         DomaineHal domaineHalIn = domaineHalDao.save(domaineHal);
         DomaineHal domaineHalOut = domaineHalDao.findById(domaineHalIn.getIdDomaine()).get();
         assertThat(domaineHalOut.getIdDomaine()).isEqualTo(domaineHalIn.getIdDomaine());

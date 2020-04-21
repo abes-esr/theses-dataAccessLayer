@@ -34,7 +34,7 @@ public class IMetadataFormatDaoTest {
     }
 
     @Test
-    public void testFindOaiRecord() {
+    public void testfindById() {
         MetadataFormat metadataFormatIn = metadataFormatDao.save(this.metadataFormat);
         MetadataFormat metadataFormatOut = metadataFormatDao.findById(metadataFormatIn.getId()).get();
         assertThat(metadataFormatOut.getId()).isEqualTo(metadataFormatIn.getId());
@@ -45,7 +45,7 @@ public class IMetadataFormatDaoTest {
     }
 
     @Test
-    public void testSaveOaiRecord() {
+    public void testSave() {
         MetadataFormat metadataFormat = metadataFormatDao.save(this.metadataFormat);
         assertThat(metadataFormat.getId()).isEqualTo(this.metadataFormat.getId());
         assertThat(metadataFormat.getMetadataPrefix()).isEqualTo(this.metadataFormat.getMetadataPrefix());
@@ -55,7 +55,7 @@ public class IMetadataFormatDaoTest {
     }
 
     @Test
-    public void deleteById() {
+    public void testDeleteById() {
         MetadataFormat metadataFormatIn = metadataFormatDao.save(metadataFormat);
         metadataFormatDao.deleteById(metadataFormatIn.getId());
         assertThat(metadataFormatDao.findById(metadataFormatIn.getId())).isEmpty();

@@ -33,7 +33,7 @@ public class ILdapUserDaoTest {
     }
 
     @Test
-    public void testFindCompte() {
+    public void testFindById() {
         LdapUser ldapUserIn = ldapUserDao.save(ldapUser);
         LdapUser ldapUserOut = ldapUserDao.findById(ldapUserIn.getId()).get();
         assertThat(ldapUserOut.getId()).isEqualTo(ldapUserIn.getId());
@@ -42,7 +42,7 @@ public class ILdapUserDaoTest {
     }
 
     @Test
-    public void testSaveCompte() {
+    public void testSave() {
         LdapUser ldapUserIn = ldapUserDao.save(ldapUser);
         assertThat(ldapUserIn.getId()).isEqualTo(ldapUser.getId());
         assertThat(ldapUserIn.getCn()).isEqualTo(ldapUser.getCn());
@@ -50,7 +50,7 @@ public class ILdapUserDaoTest {
     }
 
     @Test
-    public void deleteById() {
+    public void testDeleteById() {
         LdapUser ldapUserIn = ldapUserDao.save(ldapUser);
         ldapUserDao.deleteById(ldapUserIn.getId());
         assertThat(ldapUserDao.findById(ldapUserIn.getId())).isEmpty();

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
-import org.jdom2.Document;
+import org.w3c.dom.Document;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +27,7 @@ public class EtablissementStar implements Serializable, GenericEntity<String> {
 
     @Type(type = "HibernateXMLType")
     @Column(name = "FICHE")
-    private org.jdom2.Document fiche;
+    private Document fiche;
 
     public EtablissementStar(String code, Document fiche) {
         this.code = code;

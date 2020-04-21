@@ -20,7 +20,7 @@ public class DaoPortailProvider {
     private IDocumentPortailDao documentPortailDao;
 
     @Resource
-    private IEtablissementDao etablissementDao;
+    private IEtablissementPortailDao etablissementDao;
 
     @Resource
     private IMetadataFormatDao metadataFormatDao;

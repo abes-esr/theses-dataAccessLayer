@@ -1,4 +1,7 @@
 package fr.abes.theses.thesesAccessLayer.dao.step;
 
-public interface IInitFormationStepDao {
+import fr.abes.theses.thesesAccessLayer.model.entities.step.InitFormationStep;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface IInitFormationStepDao extends JpaRepository<InitFormationStep, Integer> {
 }

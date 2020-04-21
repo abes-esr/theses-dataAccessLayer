@@ -49,7 +49,7 @@ public class IMetadataTefDaoTest {
 
     @Test
     @Transactional
-    public void testFindRecSetMarc() {
+    public void testfindById() {
         MetadataTef metadataTefIn = metadataTefDao.save(this.metadataTef);
         MetadataTef metadataTefOut = metadataTefDao.findById(metadataTefIn.getId()).get();
         assertThat(metadataTefOut.getId()).isEqualTo(metadataTefIn.getId());
@@ -58,7 +58,7 @@ public class IMetadataTefDaoTest {
 
     @Test
     @Transactional
-    public void testSaveRecSetMarc() {
+    public void testSave() {
         MetadataTef metadataTef = metadataTefDao.save(this.metadataTef);
         assertThat(metadataTef.getId()).isEqualTo(this.metadataTef.getId());
         assertThat(metadataTef.getMetadata()).isEqualTo(this.metadataTef.getMetadata());

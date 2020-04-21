@@ -51,7 +51,7 @@ public class IMetadataOaiDcDaoTest {
 
     @Test
     @Transactional
-    public void testFindRecSetOaiDc() {
+    public void testfindById() {
         MetadataOaiDc metadataOaiDcIn = metadataOaiDcDao.save(this.metadataOaiDc);
         MetadataOaiDc metadataOaiDcOut = metadataOaiDcDao.findById(metadataOaiDcIn.getId()).get();
         assertThat(metadataOaiDcOut.getId()).isEqualTo(metadataOaiDcIn.getId());
@@ -60,7 +60,7 @@ public class IMetadataOaiDcDaoTest {
 
     @Test
     @Transactional
-    public void testSaveRecSetOaiDc() {
+    public void testSave() {
         MetadataOaiDc metadataOaiDc = metadataOaiDcDao.save(this.metadataOaiDc);
         assertThat(metadataOaiDc.getId()).isEqualTo(this.metadataOaiDc.getId());
         assertThat(metadataOaiDc.getMetadata()).isEqualTo(this.metadataOaiDc.getMetadata());

@@ -1,7 +1,9 @@
 package fr.abes.theses.thesesAccessLayer.dao.portail;
 
 import fr.abes.theses.thesesAccessLayer.ThesesAccessLayerApplication;
-import fr.abes.theses.thesesAccessLayer.model.entities.portail.DocumentPortail;
+import fr.abes.theses.thesesAccessLayer.dao.star.IEtablissementStarDao;
+import fr.abes.theses.thesesAccessLayer.model.entities.portail.EtablissementPortail;
+import fr.abes.theses.thesesAccessLayer.model.entities.star.EtablissementStar;
 import fr.abes.theses.thesesAccessLayer.model.types.HibernateXMLType;
 import org.jdom2.JDOMException;
 import org.junit.jupiter.api.AfterEach;
@@ -27,47 +29,47 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = ThesesAccessLayerApplication.class)
 @EnableTransactionManagement
-public class IDocumentPortailDaoTest {
-    private DocumentPortail documentPortail;
+public class IEtablissementPortailDaoTest {
+    private EtablissementPortail etablissement;
 
     @Autowired
-    private IDocumentPortailDao documentPortailDao;
+    private IEtablissementPortailDao etablissementDao;
 
     @BeforeEach
     public void init() throws ParserConfigurationException, SAXException, IOException, JDOMException {
-        documentPortail = getDocumentPortail();
+        etablissement = getEtablissement();
     }
 
     @AfterEach
     public void end() {
-        documentPortailDao.delete(documentPortail);
+        etablissementDao.delete(etablissement);
     }
 
     @Test
-    public void testFindById() throws TransformerException {
-        DocumentPortail documentIn = documentPortailDao.save(documentPortail);
-        DocumentPortail documentOut = documentPortailDao.findById(documentIn.getId()).get();
-        assertThat(documentOut.getCodeEtab()).isEqualTo(documentIn.getCodeEtab());
-        assertThat(HibernateXMLType.domToString(documentOut.getDoc())).isEqualTo(HibernateXMLType.domToString(documentIn.getDoc()));
+    public void testfindById() throws TransformerException {
+        EtablissementPortail etablissementIn = etablissementDao.save(etablissement);
+        EtablissementPortail etablissementout = etablissementDao.findById(etablissementIn.getId()).get();
+        assertThat(etablissementout.getCode()).isEqualTo(etablissementIn.getCode());
+        assertThat(HibernateXMLType.domToString(etablissementout.getFiche())).isEqualTo(HibernateXMLType.domToString(etablissementIn.getFiche()));
     }
 
     @Test
     public void testDeleteById() {
-        DocumentPortail documentStepIn = documentPortailDao.save(documentPortail);
-        documentPortailDao.deleteById(documentStepIn.getId());
-        assertThat(documentPortailDao.findById(documentStepIn.getId())).isEmpty();
+        EtablissementPortail etablissementStarIn = etablissementDao.save(etablissement);
+        etablissementDao.deleteById(etablissementStarIn.getId());
+        assertThat(etablissementDao.findById(etablissementStarIn.getId())).isEmpty();
     }
 
-    private DocumentPortail getDocumentPortail() throws IOException, SAXException, ParserConfigurationException, JDOMException {
-        DocumentPortail documentPortail = new DocumentPortail();
-        documentPortail.setIdDoc(999999);
-        documentPortail.setCodeEtab("TEST");
-        String filePath = getClass().getClassLoader().getResource("tef.xml").getPath();
+    private EtablissementPortail getEtablissement() throws IOException, SAXException, ParserConfigurationException, JDOMException {
+        EtablissementPortail etablissement = new EtablissementPortail();
+        etablissement.setCode("TEST");
+        String filePath = getClass().getClassLoader().getResource("etablissement.xml").getPath();
         File fXmlFile = new File(filePath);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = dBuilder.parse(fXmlFile);
-        documentPortail.setDoc(doc);
-        return documentPortail;
+        etablissement.setFiche(doc);
+        return etablissement;
     }
 }
+

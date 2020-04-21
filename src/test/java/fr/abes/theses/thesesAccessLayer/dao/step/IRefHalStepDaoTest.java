@@ -34,7 +34,7 @@ public class IRefHalStepDaoTest {
     }
 
     @Test
-    public void testFindCompte() {
+    public void testFindById() {
         RefHalStep refHalIn = refHalDao.save(refHal);
         RefHalStep refHalOut = refHalDao.findById(refHalIn.getId()).get();
         assertThat(refHalOut.getId()).isEqualTo(refHalIn.getId());
@@ -42,7 +42,7 @@ public class IRefHalStepDaoTest {
     }
 
     @Test
-    public void testSaveCompte() {
+    public void testSave() {
         RefHalStep refHalIn = refHalDao.save(refHal);
         assertThat(refHalIn.getId()).isEqualTo(refHal.getId());
         assertThat(refHalIn.getNameLabo()).isEqualTo(refHal.getNameLabo());

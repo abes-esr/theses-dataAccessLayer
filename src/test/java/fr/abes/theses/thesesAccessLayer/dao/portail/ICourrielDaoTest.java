@@ -35,21 +35,21 @@ public class ICourrielDaoTest {
     }
 
     @Test
-    public void testFindcourriel() {
+    public void testfindById() {
         Courriel courrielIn = CourrielDao.save(courriel);
         Courriel courrielOut = CourrielDao.findById(courrielIn.getId()).get();
         assertThat(courrielOut.getId()).isEqualTo(courrielIn.getId());
     }
 
     @Test
-    public void testSavecourriel() {
+    public void testSave() {
         Courriel courrielIn = CourrielDao.save(courriel);
         assertThat(courrielIn.getId()).isEqualTo(courriel.getId());
         assertThat(courrielIn.getDateEnvoi()).isEqualTo(courriel.getDateEnvoi());
     }
 
     @Test
-    public void deleteById() {
+    public void testDeleteById() {
         Courriel courrielIn = CourrielDao.save(courriel);
         CourrielDao.deleteById(courrielIn.getId());
         assertThat(CourrielDao.findById(courrielIn.getId())).isEmpty();

@@ -33,7 +33,7 @@ public class IRefHalStarDaoTest {
         }
 
         @Test
-        public void testFindCompte() {
+        public void testFindById() {
             RefHalStar refHalIn = refHalDao.save(refHal);
             RefHalStar refHalOut = refHalDao.findById(refHalIn.getId()).get();
             assertThat(refHalOut.getId()).isEqualTo(refHalIn.getId());
@@ -41,14 +41,14 @@ public class IRefHalStarDaoTest {
         }
 
         @Test
-        public void testSaveCompte() {
+        public void testSave() {
             RefHalStar refHalIn = refHalDao.save(refHal);
             assertThat(refHalIn.getId()).isEqualTo(refHal.getId());
             assertThat(refHalIn.getNameLabo()).isEqualTo(refHal.getNameLabo());
         }
 
         @Test
-        public void deleteById() {
+        public void testDeleteById() {
             RefHalStar compteIn = refHalDao.save(refHal);
             refHalDao.deleteById(compteIn.getId());
             assertThat(refHalDao.findById(compteIn.getId())).isEmpty();

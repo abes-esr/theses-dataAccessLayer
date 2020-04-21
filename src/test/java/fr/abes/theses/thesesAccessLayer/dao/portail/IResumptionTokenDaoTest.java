@@ -30,7 +30,7 @@ public class IResumptionTokenDaoTest {
     }
 
     @Test
-    public void testFindCompte() {
+    public void testfindById() {
         ResumptionToken resumptionTokenIn = resumptionTokenDao.save(resumptionToken);
         ResumptionToken resumptionTokenOut = resumptionTokenDao.findById(resumptionTokenIn.getId()).get();
         assertThat(resumptionTokenOut.getId()).isEqualTo(resumptionTokenIn.getId());
@@ -39,7 +39,7 @@ public class IResumptionTokenDaoTest {
     }
 
     @Test
-    public void testSaveCompte() {
+    public void testSave() {
         ResumptionToken resumptionTokenIn = resumptionTokenDao.save(resumptionToken);
         assertThat(resumptionTokenIn.getId()).isEqualTo(resumptionToken.getId());
         assertThat(resumptionTokenIn.getResumptionToken()).isEqualTo(resumptionToken.getResumptionToken());
@@ -47,7 +47,7 @@ public class IResumptionTokenDaoTest {
     }
 
     @Test
-    public void deleteById() {
+    public void testDeleteById() {
         ResumptionToken resumptionTokenIn = resumptionTokenDao.save(resumptionToken);
         resumptionTokenDao.deleteById(resumptionTokenIn.getId());
         assertThat(resumptionTokenDao.findById(resumptionTokenIn.getId())).isEmpty();

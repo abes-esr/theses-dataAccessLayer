@@ -35,21 +35,21 @@ public class IOaiRecordTefDaoTest {
     }
 
     @Test
-    public void testFindOaiRecord() {
+    public void testfindById() {
         OaiRecordTef oaiRecordIn = oaiRecordTefDao.save(oaiRecordTef);
         OaiRecordTef oaiRecordOut = oaiRecordTefDao.findById(oaiRecordIn.getId()).get();
         assertThat(oaiRecordOut.getId()).isEqualTo(oaiRecordIn.getId());
     }
 
     @Test
-    public void testSaveOaiRecord() {
+    public void testSave() {
         OaiRecordTef oaiRecordIn = oaiRecordTefDao.save(oaiRecordTef);
         assertThat(oaiRecordIn.getId()).isEqualTo(oaiRecordTef.getId());
         assertThat(oaiRecordIn.getDateInsertion()).isEqualTo(oaiRecordTef.getDateInsertion());
     }
 
     @Test
-    public void deleteById() {
+    public void testDeleteById() {
         OaiRecordTef oaiRecordIn = oaiRecordTefDao.save(oaiRecordTef);
         oaiRecordTefDao.deleteById(oaiRecordIn.getId());
         assertThat(oaiRecordTefDao.findById(oaiRecordIn.getId())).isEmpty();

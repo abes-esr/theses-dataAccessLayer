@@ -1,4 +1,7 @@
 package fr.abes.theses.thesesAccessLayer.dao.star;
 
-public interface ISimEtablissementDao {
+import fr.abes.theses.thesesAccessLayer.model.entities.star.SimEtablissemnt;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ISimEtablissementDao extends JpaRepository<SimEtablissemnt, String> {
 }

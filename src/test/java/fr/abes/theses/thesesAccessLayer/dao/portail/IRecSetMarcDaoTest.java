@@ -57,7 +57,7 @@ public class IRecSetMarcDaoTest {
     }
 
     @Test
-    public void testFindRecSetMarc() {
+    public void testfindById() {
         RecSetMarc recSetMarcIn = recSetMarcDao.save(recSetMarc);
         RecSetMarc recSetMarcOut = recSetMarcDao.findById(recSetMarcIn.getId()).get();
         assertThat(recSetMarcOut.getId().getOaiRecordId()).isEqualTo(recSetMarcIn.getId().getOaiRecordId());
@@ -66,7 +66,7 @@ public class IRecSetMarcDaoTest {
     }
 
     @Test
-    public void testSaveRecSetMarc() {
+    public void testSave() {
         RecSetMarc recSetMarcIn = recSetMarcDao.save(this.recSetMarc);
         assertThat(recSetMarcIn.getId().getOaiRecordId()).isEqualTo(this.recSetMarc.getId().getOaiRecordId());
         assertThat(recSetMarcIn.getId().getSetId()).isEqualTo(this.recSetMarc.getId().getSetId());
@@ -74,7 +74,7 @@ public class IRecSetMarcDaoTest {
     }
 
     @Test
-    public void deleteById() {
+    public void testDeleteById() {
         RecSetMarc recSetMarcIn = recSetMarcDao.save(recSetMarc);
         recSetMarcDao.deleteById(recSetMarcIn.getId());
         assertThat(recSetMarcDao.findById(recSetMarcIn.getId())).isEmpty();

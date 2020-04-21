@@ -1,6 +1,8 @@
 package fr.abes.theses.thesesAccessLayer.configuration;
 
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -39,8 +41,13 @@ public abstract class AbstractConfig {
     }
 
     protected DataSource getDataSource(String username, String password) {
-        DriverManagerDataSource dataSource
-                = new DriverManagerDataSource();
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        /*HikariDataSource dataSource = DataSourceBuilder.create()
+                .url(url)
+                .username(username)
+                .password(password)
+                .driverClassName(driver)
+                .type(HikariDataSource.class).build();*/
         dataSource.setDriverClassName(driver);
         dataSource.setUrl(url);
         dataSource.setUsername(username);
