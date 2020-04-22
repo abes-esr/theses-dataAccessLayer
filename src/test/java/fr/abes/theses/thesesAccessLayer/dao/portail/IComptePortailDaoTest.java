@@ -2,6 +2,7 @@ package fr.abes.theses.thesesAccessLayer.dao.portail;
 
 import fr.abes.theses.thesesAccessLayer.ThesesAccessLayerApplication;
 import fr.abes.theses.thesesAccessLayer.model.entities.portail.ComptePortail;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,11 +30,14 @@ public class IComptePortailDaoTest {
         comptePortail = getComptePortail();
     }
 
+    @AfterEach
+    public void end() { compteDao.delete(comptePortail);}
     @Test
     @Transactional
     public void testSave() {
-        ComptePortail comptePortailIn = compteDao.save(comptePortail);
-        assertThat(comptePortailIn.getId()).isEqualTo(comptePortail.getId());
+        ComptePortail compteIn = compteDao.save(comptePortail);
+        assertThat(compteIn.getEmail()).isEqualTo(comptePortail.getEmail());
+        assertThat(compteIn.getMdp()).isEqualTo(comptePortail.getMdp());
     }
 
     @Test
