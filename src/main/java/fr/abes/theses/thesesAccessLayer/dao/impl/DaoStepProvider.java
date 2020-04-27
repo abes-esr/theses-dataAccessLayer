@@ -12,9 +12,6 @@ public class DaoStepProvider {
     private ICompteStarDao compteDao;
 
     @Resource
-    private IDocIndexationSolrDao docIndexationSolrDao;
-
-    @Resource
     private IDocumentStepDao documentStepDao;
 
     @Resource
