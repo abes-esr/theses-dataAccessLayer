@@ -18,6 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = ThesesAccessLayerApplication.class)
 @EnableTransactionManagement
+@Disabled
 public class IRecSetMarcDaoTest {
     private RecSetMarc recSetMarc;
     private OaiRecordMarc oaiRecordMarc;

@@ -5,6 +5,7 @@ import fr.abes.theses.thesesAccessLayer.model.entities.portail.MetadataTef;
 import fr.abes.theses.thesesAccessLayer.model.entities.portail.OaiRecordTef;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = ThesesAccessLayerApplication.class)
 @EnableTransactionManagement
+@Disabled
 public class IMetadataTefDaoTest {
     private MetadataTef metadataTef;
     private OaiRecordTef oaiRecordTef;
