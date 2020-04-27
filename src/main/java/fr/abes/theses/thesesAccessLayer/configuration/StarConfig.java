@@ -20,6 +20,8 @@ import javax.sql.DataSource;
 )
 @NoArgsConstructor
 public class StarConfig extends AbstractConfig{
+    @Value("${spring.datasource.star.url}")
+    private String url;
     @Value("${star.datasource.username}")
     private String username;
     @Value("${star.datasource.password}")
@@ -33,14 +35,14 @@ public class StarConfig extends AbstractConfig{
         em.setDataSource(starDataSource());
         em.setPackagesToScan(
                 new String[] { "fr.abes.theses.thesesAccessLayer.model.entities.star" });
-        configHibernate(em);
+        configHibernate(em, "STAR");
         return em;
     }
 
     @Bean
     @Primary
     public DataSource starDataSource() {
-        return getDataSource(username, password);
+        return getDataSource(url, username, password);
     }
 
     @Bean

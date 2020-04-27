@@ -20,6 +20,8 @@ import javax.sql.DataSource;
 )
 @NoArgsConstructor
 public class PortailConfig extends AbstractConfig {
+    @Value("${spring.datasource.portail.url}")
+    private String url;
     @Value("${portail.datasource.username}")
     private String username;
     @Value("${portail.datasource.password}")
@@ -32,13 +34,13 @@ public class PortailConfig extends AbstractConfig {
         em.setDataSource(portailDataSource());
         em.setPackagesToScan(
                 new String[] { "fr.abes.theses.thesesAccessLayer.model.entities.portail" });
-        configHibernate(em);
+        configHibernate(em, "PORTAIL");
         return em;
     }
 
     @Bean
     public DataSource portailDataSource() {
-        return getDataSource(username, password);
+        return getDataSource(url, username, password);
     }
 
     @Bean

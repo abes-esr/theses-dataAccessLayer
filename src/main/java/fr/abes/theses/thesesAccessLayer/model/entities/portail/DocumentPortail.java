@@ -15,7 +15,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "DOCUMENT")
+@Table(name = "DOCUMENT", schema = "PORTAIL")
 @NoArgsConstructor
 @Getter @Setter
 @TypeDef(name = "HibernateXMLType", typeClass = HibernateXMLType.class)

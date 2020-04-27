@@ -14,7 +14,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "DOCUMENT")
+@Table(name = "DOCUMENT", schema = "SUJETS")
 @NoArgsConstructor
 @Getter @Setter
 @TypeDef(name = "HibernateXMLType", typeClass = HibernateXMLType.class)

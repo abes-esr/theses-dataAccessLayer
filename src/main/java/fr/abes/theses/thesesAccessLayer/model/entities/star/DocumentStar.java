@@ -13,7 +13,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "DOCUMENT")
+@Table(name = "DOCUMENT", schema = "STAR")
 @NoArgsConstructor
 @Getter @Setter
 @SequenceGenerator(name = "SEQ_DOC", sequenceName = "SEQ_DOC", initialValue = 1, allocationSize = 1)

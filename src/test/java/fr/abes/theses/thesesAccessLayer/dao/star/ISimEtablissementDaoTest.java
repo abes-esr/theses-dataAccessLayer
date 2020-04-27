@@ -1,7 +1,5 @@
 package fr.abes.theses.thesesAccessLayer.dao.star;
 
-import fr.abes.theses.thesesAccessLayer.ThesesAccessLayerApplication;
-import fr.abes.theses.thesesAccessLayer.model.entities.star.EtablissementStar;
 import fr.abes.theses.thesesAccessLayer.model.entities.star.SimEtablissemnt;
 import fr.abes.theses.thesesAccessLayer.model.types.HibernateXMLType;
 import org.jdom2.JDOMException;
@@ -10,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.w3c.dom.Document;
@@ -26,7 +24,7 @@ import java.io.IOException;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = ThesesAccessLayerApplication.class)
+@DataJpaTest
 @EnableTransactionManagement
 public class ISimEtablissementDaoTest {
     private SimEtablissemnt etablissement;

@@ -19,6 +19,8 @@ import javax.sql.DataSource;
 )
 @NoArgsConstructor
 public class StepConfig extends AbstractConfig {
+    @Value("${spring.datasource.sujets.url}")
+    private String url;
     @Value("${step.datasource.username}")
     private String username;
     @Value("${step.datasource.password}")
@@ -31,13 +33,13 @@ public class StepConfig extends AbstractConfig {
         em.setDataSource(stepDataSource());
         em.setPackagesToScan(
                 new String[]{"fr.abes.theses.thesesAccessLayer.model.entities.step"});
-        configHibernate(em);
+        configHibernate(em, "SUJETS");
         return em;
     }
 
     @Bean
     public DataSource stepDataSource() {
-        return getDataSource(username, password);
+        return getDataSource(url, username, password);
     }
 
     @Bean
