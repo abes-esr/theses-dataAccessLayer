@@ -8,53 +8,53 @@ import javax.annotation.Resource;
 @Getter
 public class DaoPortailProvider {
     @Resource
-    private IAnrtCorrespDao anrtCorrespDao;
+    private IAnrtCorrespDao anrtCorresp;
 
     @Resource
-    private IComptePortailDao compteDao;
+    private IComptePortailDao compte;
 
     @Resource
-    private ICourrielDao courrielDao;
+    private ICourrielDao courriel;
 
     @Resource
-    private IDocumentPortailDao documentPortailDao;
+    private IDocumentPortailDao documentPortail;
 
     @Resource
-    private IEtablissementPortailDao etablissementDao;
+    private IEtablissementPortailDao etablissement;
 
     @Resource
-    private IMetadataFormatDao metadataFormatDao;
+    private IMetadataFormatDao metadataFormat;
 
     @Resource
-    private IMetadataMarcDao metadataMarcDao;
+    private IMetadataMarcDao metadataMarc;
 
     @Resource
-    private IMetadataOaiDcDao metadataOaiDcDao;
+    private IMetadataOaiDcDao metadataOaiDc;
 
     @Resource
-    private IMetadataTefDao metadataTefDao;
+    private IMetadataTefDao metadataTef;
 
     @Resource
-    private IOaiRecordMarcDao oaiRecordMarcDao;
+    private IOaiRecordMarcDao oaiRecordMarc;
 
     @Resource
-    private IOaiRecordOaiDcDao oaiRecordOaiDcDao;
+    private IOaiRecordOaiDcDao oaiRecordOaiDc;
 
     @Resource
-    private IOaiRecordTefDao oaiRecordTefDao;
+    private IOaiRecordTefDao oaiRecordTef;
 
     @Resource
-    private IOaiSetDao oaiSetDao;
+    private IOaiSetDao oaiSet;
 
     @Resource
-    private IRecSetMarcDao recSetMarcDao;
+    private IRecSetMarcDao recSetMarc;
 
     @Resource
-    private IRecSetOaiDcDao recSetOaiDcDao;
+    private IRecSetOaiDcDao recSetOaiDc;
 
     @Resource
-    private IRecSetTefDao recSetTefDao;
+    private IRecSetTefDao recSetTef;
 
     @Resource
-    private IResumptionTokenDao resumptionTokenDao;
+    private IResumptionTokenDao resumptionToken;
 }

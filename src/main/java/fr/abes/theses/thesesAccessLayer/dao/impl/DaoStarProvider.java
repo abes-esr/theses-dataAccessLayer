@@ -9,42 +9,42 @@ import javax.annotation.Resource;
 @Service
 @Getter
 public class DaoStarProvider {
-//    @Resource
-//    private ICommentairesDao commentairesDao;
-//
-//    @Resource
-//    private ICompteDao compteDao;
+    @Resource
+    private ICommentairesDao commentaires;
 
     @Resource
-    private IDocumentStarDao documentDao;
-
-//    @Resource
-//    private  IDomaineHalDao domaineHalDao;
-//
-//    @Resource
-//    private IInitFormationDao initFormationDao;
-//
-//    @Resource
-//    private ILdapUserDao ldapUserDao;
+    private ICompteStarDao compte;
 
     @Resource
-    private INoticeBiblioDao noticeBiblioDao;
-
-//    @Resource
-//    private IRefHalDao refHalDao;
-//
-//    @Resource
-//    private ISimEtablissementDao simEtablissementDao;
-//
-//    @Resource
-//    private ISimRestiersDao simRestiersDao;
-//
-//    @Resource
-//    private ISimThesesDao simThesesDao;
-//
-//    @Resource
-//    private IVerrouDao verrouDao;
+    private IDocumentStarDao document;
 
     @Resource
-    private IZonePrioritaireDao zonePrioritaireDao;
+    private  IDomaineHalDao domaineHal;
+
+    @Resource
+    private IInitFormationStarDao initFormation;
+
+    @Resource
+    private ILdapUserDao ldapUser;
+
+    @Resource
+    private INoticeBiblioDao noticeBiblio;
+
+    @Resource
+    private IRefHalStarDao refHal;
+
+    @Resource
+    private ISimEtablissementDao simEtablissement;
+
+    @Resource
+    private ISimRestiersDao simRestiers;
+
+    @Resource
+    private ISimThesesDao simTheses;
+
+    @Resource
+    private IVerrouStarDao verrou;
+
+    @Resource
+    private IZonePrioritaireDao zonePrioritaire;
 }

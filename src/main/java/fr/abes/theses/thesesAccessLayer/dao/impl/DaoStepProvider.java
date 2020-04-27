@@ -9,20 +9,20 @@ import javax.annotation.Resource;
 @Getter
 public class DaoStepProvider {
     @Resource
-    private ICompteStarDao compteDao;
+    private ICompteStarDao compte;
 
     @Resource
-    private IDocumentStepDao documentStepDao;
+    private IDocumentStepDao document;
 
     @Resource
-    private IEtablissementStepDao etablissementDao;
+    private IEtablissementStepDao etablissement;
 
     @Resource
-    private IInitFormationStepDao initFormationDao;
+    private IInitFormationStepDao initFormation;
 
     @Resource
-    private IRefHalStepDao refHalDao;
+    private IRefHalStepDao refHal;
 
     @Resource
-    private IVerrouStepDao verrouDao;
+    private IVerrouStepDao verrou;
 }
