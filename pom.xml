@@ -86,11 +86,6 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.jdom</groupId>
-            <artifactId>jdom2</artifactId>
-            <version>2.0.6</version>
-        </dependency>
-        <dependency>
             <groupId>net.sf.saxon</groupId>
             <artifactId>saxon</artifactId>
             <version>8.7</version>
@@ -109,11 +104,6 @@
             <groupId>oracle.ojdbc</groupId>
             <artifactId>xdb6</artifactId>
             <version>12.1.0.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>oracle</groupId>
-            <artifactId>xmlparser</artifactId>
-            <version>2.0</version>
         </dependency>
     </dependencies>
     <build>

@@ -20,7 +20,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = ThesesAccessLayerApplication.class)
 @EnableTransactionManagement
-@Disabled
 public class IComptePortailDaoTest {
     public ComptePortail comptePortail;
 

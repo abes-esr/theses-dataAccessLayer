@@ -4,7 +4,8 @@ import fr.abes.theses.thesesAccessLayer.ThesesAccessLayerApplication;
 import fr.abes.theses.thesesAccessLayer.model.entities.star.SimEtablissemnt;
 import fr.abes.theses.thesesAccessLayer.model.entities.star.SimRestiers;
 import fr.abes.theses.thesesAccessLayer.model.types.HibernateXMLType;
-import org.jdom2.JDOMException;
+import org.dom4j.DocumentException;
+import org.dom4j.io.SAXReader;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -29,7 +30,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = ThesesAccessLayerApplication.class)
 @EnableTransactionManagement
-@Disabled
 public class ISimRestiersDaoTest {
     private SimRestiers restiers;
 
@@ -37,7 +37,7 @@ public class ISimRestiersDaoTest {
     private ISimRestiersDao restiersDao;
 
     @BeforeEach
-    public void init() throws ParserConfigurationException, SAXException, IOException, JDOMException {
+    public void init() throws DocumentException {
         restiers = getRestiers();
     }
 
@@ -61,15 +61,13 @@ public class ISimRestiersDaoTest {
         assertThat(restiersDao.findById(restierIn.getId())).isEmpty();
     }
 
-    private SimRestiers getRestiers() throws IOException, SAXException, ParserConfigurationException, JDOMException {
+    private SimRestiers getRestiers() throws DocumentException {
         SimRestiers simRestiers = new SimRestiers();
         simRestiers.setCode("TEST");
         String filePath = getClass().getClassLoader().getResource("etablissement.xml").getPath();
-        File fXmlFile = new File(filePath);
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = dBuilder.parse(fXmlFile);
-        simRestiers.setFiche(doc);
+        File xmlfile = new File(filePath);
+        SAXReader reader = new SAXReader();
+        simRestiers.setFiche(reader.read(xmlfile));
         return simRestiers;
     }
 

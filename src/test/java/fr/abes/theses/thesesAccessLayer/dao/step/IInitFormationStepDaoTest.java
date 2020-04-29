@@ -1,35 +1,27 @@
 package fr.abes.theses.thesesAccessLayer.dao.step;
 
 import fr.abes.theses.thesesAccessLayer.ThesesAccessLayerApplication;
-import fr.abes.theses.thesesAccessLayer.dao.star.IInitFormationStarDao;
-import fr.abes.theses.thesesAccessLayer.model.entities.star.InitFormationStar;
 import fr.abes.theses.thesesAccessLayer.model.entities.step.InitFormationStep;
 import fr.abes.theses.thesesAccessLayer.model.types.HibernateXMLType;
+import org.dom4j.DocumentException;
+import org.dom4j.io.SAXReader;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import java.io.File;
-import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = ThesesAccessLayerApplication.class)
 @EnableTransactionManagement
-@Disabled
 public class IInitFormationStepDaoTest {
     private InitFormationStep initFormation;
 
@@ -37,7 +29,7 @@ public class IInitFormationStepDaoTest {
     private IInitFormationStepDao initFormationDao;
 
     @BeforeEach
-    public void init() throws ParserConfigurationException, SAXException, IOException {
+    public void init() throws DocumentException {
         initFormation = getInitFormation();
     }
 
@@ -62,16 +54,14 @@ public class IInitFormationStepDaoTest {
     }
 
 
-    private InitFormationStep getInitFormation() throws IOException, SAXException, ParserConfigurationException {
+    private InitFormationStep getInitFormation() throws DocumentException {
         String filePath = getClass().getClassLoader().getResource("initFormation.xml").getPath();
-        File fXmlFile = new File(filePath);
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = dBuilder.parse(fXmlFile);
+        File xmlfile = new File(filePath);
+        SAXReader reader = new SAXReader();
         InitFormationStep initFormation = new InitFormationStep();
         initFormation.setIdDoc(999999);
         initFormation.setCodeEtab("TEST");
-        initFormation.setDoc(doc);
+        initFormation.setDoc(reader.read(xmlfile));
         return initFormation;
     }
 }

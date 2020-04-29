@@ -21,7 +21,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = ThesesAccessLayerApplication.class)
 @EnableTransactionManagement
-@Disabled
 public class IMetadataMarcDaoTest {
     private MetadataMarc metadataMarc;
     private OaiRecordMarc oaiRecordMarc;

@@ -1,41 +1,27 @@
 package fr.abes.theses.thesesAccessLayer.dao.star;
 
 import fr.abes.theses.thesesAccessLayer.ThesesAccessLayerApplication;
-import fr.abes.theses.thesesAccessLayer.dao.step.IDocumentStepDao;
 import fr.abes.theses.thesesAccessLayer.model.entities.star.DocumentStar;
-import fr.abes.theses.thesesAccessLayer.model.entities.star.EtablissementStar;
 import fr.abes.theses.thesesAccessLayer.model.types.HibernateXMLType;
-import org.jdom2.JDOMException;
+import org.dom4j.DocumentException;
+import org.dom4j.io.SAXReader;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = ThesesAccessLayerApplication.class)
 @EnableTransactionManagement
-@Disabled
 public class IDocumentStarDaoTest {
     private DocumentStar documentStar;
 
@@ -43,7 +29,7 @@ public class IDocumentStarDaoTest {
     private IDocumentStarDao documentStarDao;
 
     @BeforeEach
-    public void init() throws ParserConfigurationException, SAXException, IOException, JDOMException {
+    public void init() throws DocumentException {
         documentStar = getDocumentStar();
     }
 
@@ -67,15 +53,13 @@ public class IDocumentStarDaoTest {
         assertThat(documentStarDao.findById(documentStarIn.getId())).isEmpty();
     }
 
-    private DocumentStar getDocumentStar() throws IOException, SAXException, ParserConfigurationException, JDOMException {
+    private DocumentStar getDocumentStar() throws DocumentException {
         DocumentStar documentStar = new DocumentStar();
         documentStar.setEnvoiSolr(1);
         String filePath = getClass().getClassLoader().getResource("tef.xml").getPath();
-        File fXmlFile = new File(filePath);
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = dBuilder.parse(fXmlFile);
-        documentStar.setDoc(doc);
+        File xmlfile = new File(filePath);
+        SAXReader reader = new SAXReader();
+        documentStar.setDoc(reader.read(xmlfile));
         return documentStar;
     }
 }

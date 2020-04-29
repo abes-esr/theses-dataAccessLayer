@@ -5,9 +5,9 @@ import fr.abes.theses.thesesAccessLayer.model.types.HibernateXMLType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.dom4j.Document;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
-import org.w3c.dom.Document;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

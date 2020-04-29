@@ -3,10 +3,10 @@ package fr.abes.theses.thesesAccessLayer.dao.portail;
 import fr.abes.theses.thesesAccessLayer.ThesesAccessLayerApplication;
 import fr.abes.theses.thesesAccessLayer.model.entities.portail.EtablissementPortail;
 import fr.abes.theses.thesesAccessLayer.model.types.HibernateXMLType;
-import org.jdom2.JDOMException;
+import org.dom4j.DocumentException;
+import org.dom4j.io.SAXReader;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = ThesesAccessLayerApplication.class)
 @EnableTransactionManagement
-@Disabled
 public class IEtablissementPortailDaoTest {
     private EtablissementPortail etablissement;
 
@@ -36,7 +35,7 @@ public class IEtablissementPortailDaoTest {
     private IEtablissementPortailDao etablissementDao;
 
     @BeforeEach
-    public void init() throws ParserConfigurationException, SAXException, IOException, JDOMException {
+    public void init() throws DocumentException {
         etablissement = getEtablissement();
     }
 
@@ -60,15 +59,13 @@ public class IEtablissementPortailDaoTest {
         assertThat(etablissementDao.findById(etablissementStarIn.getId())).isEmpty();
     }
 
-    private EtablissementPortail getEtablissement() throws IOException, SAXException, ParserConfigurationException, JDOMException {
+    private EtablissementPortail getEtablissement() throws DocumentException {
         EtablissementPortail etablissement = new EtablissementPortail();
         etablissement.setCode("TEST");
         String filePath = getClass().getClassLoader().getResource("etablissement.xml").getPath();
-        File fXmlFile = new File(filePath);
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = dBuilder.parse(fXmlFile);
-        etablissement.setFiche(doc);
+        File xmlFile = new File(filePath);
+        SAXReader reader = new SAXReader();
+        etablissement.setFiche(reader.read(xmlFile));
         return etablissement;
     }
 }

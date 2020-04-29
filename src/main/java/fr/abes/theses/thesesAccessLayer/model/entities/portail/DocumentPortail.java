@@ -5,12 +5,14 @@ import fr.abes.theses.thesesAccessLayer.model.types.HibernateXMLType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnTransformer;
+import org.dom4j.Document;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
-import org.w3c.dom.Document;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 

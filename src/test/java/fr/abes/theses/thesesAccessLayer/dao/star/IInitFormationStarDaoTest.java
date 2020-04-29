@@ -5,6 +5,8 @@ import fr.abes.theses.thesesAccessLayer.model.entities.star.DocumentStar;
 import fr.abes.theses.thesesAccessLayer.model.entities.star.EtablissementStar;
 import fr.abes.theses.thesesAccessLayer.model.entities.star.InitFormationStar;
 import fr.abes.theses.thesesAccessLayer.model.types.HibernateXMLType;
+import org.dom4j.DocumentException;
+import org.dom4j.io.SAXReader;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -29,7 +31,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = ThesesAccessLayerApplication.class)
 @EnableTransactionManagement
-@Disabled
 public class IInitFormationStarDaoTest {
     private InitFormationStar initFormation;
 
@@ -37,7 +38,7 @@ public class IInitFormationStarDaoTest {
     private IInitFormationStarDao initFormationDao;
 
     @BeforeEach
-    public void init() throws ParserConfigurationException, SAXException, IOException {
+    public void init() throws DocumentException {
         initFormation = getInitFormation();
     }
 
@@ -62,16 +63,14 @@ public class IInitFormationStarDaoTest {
     }
 
 
-    private InitFormationStar getInitFormation() throws IOException, SAXException, ParserConfigurationException {
+    private InitFormationStar getInitFormation() throws DocumentException {
         String filePath = getClass().getClassLoader().getResource("initFormation.xml").getPath();
-        File fXmlFile = new File(filePath);
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-        Document doc = dBuilder.parse(fXmlFile);
+        File xmlfile = new File(filePath);
+        SAXReader reader = new SAXReader();
         InitFormationStar initFormation = new InitFormationStar();
         initFormation.setIdDoc(999999);
         initFormation.setCodeEtab("TEST");
-        initFormation.setDoc(doc);
+        initFormation.setDoc(reader.read(xmlfile));
         return initFormation;
     }
 }

@@ -1,14 +1,19 @@
 package fr.abes.theses.thesesAccessLayer.model.types;
 
-import com.zaxxer.hikari.pool.HikariProxyResultSet;
-import oracle.jdbc.OracleConnection;
-import oracle.jdbc.OracleResultSet;
+import lombok.SneakyThrows;
+import net.sf.saxon.TransformerFactoryImpl;
+import oracle.jdbc.*;
 import oracle.sql.CLOB;
 import oracle.xdb.XMLType;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.dom4j.io.DocumentResult;
+import org.dom4j.io.DocumentSource;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;
-import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -18,6 +23,7 @@ import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMResult;
 import javax.xml.transform.dom.DOMSource;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -53,12 +59,12 @@ public class HibernateXMLType implements UserType, Serializable {
     }
 
     @Override
-    public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner) throws HibernateException, SQLException {
+    public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner) throws SQLException {
         XMLType xmlType = null;
-        org.w3c.dom.Document doc = null;
+        Document doc;
         try {
-            SQLXML op = null;
-            OracleResultSet ors = null;
+            SQLXML op;
+            OracleResultSet ors;
             if (rs instanceof OracleResultSet) {
                 ors = (OracleResultSet) rs;
             } else {
@@ -68,7 +74,9 @@ public class HibernateXMLType implements UserType, Serializable {
             if (op != null) {
                 xmlType = XMLType.createXML(getOracleConnection(session.connection()), op.getString());
             }
-            doc = xmlType.getDOM();
+            doc = stringToDom(xmlType.getString());
+        } catch (DocumentException e) {
+            throw new SQLException("Could not convert XMLType to dom4j document");
         } finally {
             if (null != xmlType) {
                 xmlType.close();
@@ -79,12 +87,15 @@ public class HibernateXMLType implements UserType, Serializable {
 
     @Override
     public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
+        XMLType xmlType = null;
         try {
-            XMLType xmlType = null;
             if (value != null) {
-                xmlType = XMLType.createXML(st.getConnection(), domToString((Document) value));
+                xmlType = XMLType.createXML(st.getConnection(), domToString((Document)value));
+                st.setObject(index, xmlType);
             }
-            st.setObject(index, xmlType);
+            else {
+                st.setNull(index, OracleTypes.OPAQUE, "SYS.XMLTYPE");
+            }
         } catch (Exception e) {
             throw new SQLException("Could not convert Document to String for storage");
         }
@@ -96,17 +107,15 @@ public class HibernateXMLType implements UserType, Serializable {
         Transformer transformer = tFactory.newTransformer();
         transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        DOMSource in = new DOMSource(_document);
-        transformer.transform(in, new javax.xml.transform.stream.StreamResult(out));
-        return out.toString();
+        DocumentSource source = new DocumentSource(_document);
+        DocumentResult result = new DocumentResult();
+        transformer.transform(source, result);
+        return result.getDocument().asXML();
     }
 
     public static Document stringToDom(String xmlSource)
-            throws SAXException, ParserConfigurationException, IOException {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = factory.newDocumentBuilder();
-        return builder.parse(new ByteArrayInputStream(xmlSource.getBytes("UTF-8")));
+            throws DocumentException {
+        return DocumentHelper.parseText(xmlSource);
     }
 
 
